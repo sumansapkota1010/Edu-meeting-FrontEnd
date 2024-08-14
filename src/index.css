@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply ml-[303px];
+  }
+}
+
+@layer base {
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+}
+.nav-link {
+  @apply text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-[14px] font-medium px-4 py-2;
+}
