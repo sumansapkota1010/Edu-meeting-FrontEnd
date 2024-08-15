@@ -1,5 +1,7 @@
 import React from 'react'
 import { FaChevronDown } from 'react-icons/fa'
+import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -14,22 +16,29 @@ const Header = () => {
                 </div>
 
                 <div className="flex items-center mr-[270px] whitespace-nowrap">
-                    <a className="nav-link" href="/">HOME</a>
-                    <a className="nav-link" href="/">MEETINGS</a>
-                    <a className="nav-link" href="/">APPLY NOW</a>
+                    <Link to="/" className="nav-link" href="/">HOME</Link>
+                    <Link to="/meetings" className="nav-link" >MEETINGS</Link>
+                    <ScrollLink to="apply" smooth={true} duration={500} className="nav-link cursor-pointer">
+                        APPLY NOW
+                    </ScrollLink>
                     <div className="relative group">
-                        <a href="/" className="nav-link flex items-center">
+                        <div className="nav-link flex items-center cursor-pointer">
                             PAGES
                             <FaChevronDown className="ml-1" />
-                        </a>
+                        </div>
                         <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded opacity-0 scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100">
-                            <a href="/" className="block px-4 py-2 text-black hover:text-[#f5a425]">Upcoming Meetings</a>
-                            <a href="/" className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</a>
+                            <Link to="/meetings" className="block px-4 py-2 text-black hover:text-[#f5a425]">Upcoming Meetings</Link>
+                            <Link to="/meetingDetails" className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</Link>
                         </div>
                     </div>
-                    <a className="nav-link" href="/">CONTACT US</a>
-                    <a className="nav-link" href="/">LOGIN</a>
-                    <a className="nav-link" href="/">SIGN UP</a>
+                    <ScrollLink to="courses" smooth={true} duration={500} className="nav-link cursor-pointer">
+                        COURSES
+                    </ScrollLink>
+                    <ScrollLink to="contactus" smooth={true} duration={500} className="nav-link cursor-pointer">
+                        CONTACT US
+                    </ScrollLink>
+                    <Link to="/login" className="nav-link" >LOGIN</Link>
+                    <Link to="/signup" className="nav-link" >SIGN UP</Link>
                 </div>
             </div>
         </>

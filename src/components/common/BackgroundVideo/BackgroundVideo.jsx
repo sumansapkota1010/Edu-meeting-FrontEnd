@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import Header from '../Header/Header';
 
-const Banner = () => {
+const BackgroundVideo = () => {
     return (
         <div className="relative overflow-hidden w-full h-screen">
             <video
@@ -20,14 +20,10 @@ const Banner = () => {
                 <Header />
 
 
-                <div className="flex items-center justify-center h-[calc(100vh-82px)]">
-                    <h1 className="text-white text-4xl md:text-6xl font-bold text-center">
-                        Welcome to Our Courses
-                    </h1>
-                </div>
+
             </div>
         </div>
     );
 };
 
-export default Banner;
+export default BackgroundVideo;
