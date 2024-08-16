@@ -7,7 +7,7 @@ import Courses from '../components/Main/Courses/Courses';
 const Home = () => {
     return (
         <>
-            <BackgroundVideo />
+
             <section id="apply">
                 <ApplyNow />
             </section>

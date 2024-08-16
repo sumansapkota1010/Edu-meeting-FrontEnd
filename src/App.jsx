@@ -39,7 +39,7 @@ function App() {
         },
         {
           path: "signup",
-          element: <SignUp />,
+          element: <SignUp />
         },
       ],
     },

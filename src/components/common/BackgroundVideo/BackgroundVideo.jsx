@@ -1,6 +1,8 @@
 import React from 'react';
+
+
+import TopHeader from '../TopHeader/TopHeader';
 import NavBar from '../NavBar/NavBar';
-import Header from '../Header/Header';
 
 const BackgroundVideo = () => {
     return (
@@ -16,8 +18,8 @@ const BackgroundVideo = () => {
 
             <div className="relative z-10 w-full h-full bg-black bg-opacity-40">
 
+                <TopHeader />
                 <NavBar />
-                <Header />
 
 
 
