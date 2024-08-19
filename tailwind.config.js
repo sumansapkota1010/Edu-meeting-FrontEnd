@@ -20,6 +20,17 @@ export default {
         md: "768px",
         lg: "992px",
         xl: "1200px",
+        "2xl": "1400px",
+      },
+      maxWidth: {
+        540: "540px",
+        720: "720px",
+        960: "960px",
+        1140: "1140px",
+        1320: "1320px",
+      },
+      padding: {
+        custom: "291px",
       },
     },
   },

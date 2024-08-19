@@ -2,28 +2,28 @@ import React from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom'
-import { Menu, X } from 'lucide';
 
 
+
+const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer";
 const NavBar = () => {
     return (
-        <>
-
-            <div className="flex justify-between bg-white/30 h-24 ">
-                <div className="container flex items-center ">
-                    <a href="#" className="text-[#ffffff] text-[28px] font-poppins font-bold">
+        <div className=" bg-white/20 ">
+            <div className='container py-8 flex flex-col xl:flex-row justify-between px-4 xl:px-0'>
+                <div className=" flex items-center ">
+                    <a href="#" className=" text-[#ffffff] text-[28px] font-poppins font-bold whitespace-nowrap">
                         EDU MEETING
                     </a>
                 </div>
 
-                <div className="flex items-center mr-[270px] whitespace-nowrap">
-                    <Link to="/" className="nav-link" href="/">HOME</Link>
-                    <Link to="/meetings" className="nav-link" >MEETINGS</Link>
-                    <ScrollLink to="apply" smooth={true} duration={500} className="nav-link cursor-pointer">
+                <div className=" flex gap-x-4 items-center whitespace-nowrap">
+                    <NavigationLink href="/">HOME</NavigationLink>
+                    <NavigationLink href="/meetings" >MEETINGS</NavigationLink>
+                    <NavigationLink to="apply" smooth={true} duration={500}>
                         APPLY NOW
-                    </ScrollLink>
+                    </NavigationLink>
                     <div className="relative group">
-                        <div className="nav-link flex items-center cursor-pointer">
+                        <div className={`${NavLinkClasses} flex items-center`}>
                             PAGES
                             <FaChevronDown className="ml-1" />
                         </div>
@@ -32,18 +32,26 @@ const NavBar = () => {
                             <Link to="/meetingDetails" className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</Link>
                         </div>
                     </div>
-                    <ScrollLink to="courses" smooth={true} duration={500} className="nav-link cursor-pointer">
+                    <NavigationLink to="courses" smooth={true} duration={500}>
                         COURSES
-                    </ScrollLink>
-                    <ScrollLink to="contactus" smooth={true} duration={500} className="nav-link cursor-pointer">
+                    </NavigationLink>
+                    <NavigationLink to="contactus" smooth={true} duration={500}>
                         CONTACT US
-                    </ScrollLink>
-                    <Link to="/login" className="nav-link" >LOGIN</Link>
-                    <Link to="/signup" className="nav-link" >SIGN UP</Link>
+                    </NavigationLink>
+                    <NavigationLink href="/login" >LOGIN</NavigationLink>
+                    <NavigationLink to="/signup" >SIGN UP</NavigationLink>
                 </div>
             </div>
-        </>
+        </div>
+
     )
 }
+
+const NavigationLink = ({ href, children, smooth, duration }) => (
+    duration ? (<ScrollLink to="contactus" smooth={smooth} duration={duration} className={NavLinkClasses}>
+        CONTACT US
+    </ScrollLink>) : (<Link to={href} className={NavLinkClasses} >{children}</Link>)
+)
+
 
 export default NavBar

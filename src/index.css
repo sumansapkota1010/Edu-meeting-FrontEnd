@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,15 +6,11 @@
 
 @layer components {
   .container {
-    @apply ml-[303px];
+    @apply mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px];
   }
 }
-
 @layer base {
-  .font-poppins {
+  body {
     font-family: "Poppins", sans-serif;
   }
-}
-.nav-link {
-  @apply text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-[14px] font-medium px-4 py-2;
 }
