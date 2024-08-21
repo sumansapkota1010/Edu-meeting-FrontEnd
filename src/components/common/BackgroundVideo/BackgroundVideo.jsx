@@ -5,11 +5,12 @@ import TopHeader from '../TopHeader/TopHeader';
 import NavBar from '../NavBar/NavBar';
 import { ScrollLink } from 'react-scroll';
 
+
 const BackgroundVideo = () => {
     return (
-        <div className="relative overflow-hidden w-full h-screen">
+        <div className="relative  z-10 overflow-hidden w-full h-screen">
             <video
-                className="absolute brightness- opacity-75 top-0 left-0 w-full h-full object-cover "
+                className="absolute   top-0 left-0 w-full h-full object-cover "
                 src="/src/assets/course-video.mp4"
                 autoPlay
                 muted
@@ -17,7 +18,7 @@ const BackgroundVideo = () => {
             />
 
 
-            <div className="relative z-10 w-full h-full bg-black bg-opacity-70">
+            <div className="relative z-10 w-full h-full bg-black bg-opacity-75">
 
                 <TopHeader />
                 <NavBar />
@@ -57,7 +58,9 @@ const BackgroundVideo = () => {
 
 
             </div>
+
         </div>
+
     );
 };
 

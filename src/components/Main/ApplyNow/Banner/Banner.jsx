@@ -50,31 +50,34 @@ const Banner = () => {
             },
         ],
     };
+    const isMobile = window.innerWidth <= 992;
 
     return (
         <div
+            className="relative justify-center items-center"
             style={{
                 backgroundImage: `url(${meetingBg})`,
                 backgroundPosition: 'center center',
                 backgroundAttachment: 'fixed',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                paddingTop: '230px',
-                paddingBottom: '110px',
-                margin: '0px',
-                padding: '0px',
+                marginTop: isMobile ? "60px" : "-135px",
                 border: '0px',
                 outline: '0px',
                 display: 'block',
                 boxSizing: 'border-box',
 
+
+
             }}
+
         >
-            <div className="container mx-auto ">
+            <div className=" container mx-auto relative z-20 text-center  ">
                 <Slide {...properties}>
                     {datas.map((data) => (
                         <div
                             key={data.id}
+                            className=""
                             style={{
                                 backgroundImage: `url(${serviceBg})`,
                                 backgroundRepeat: 'no-repeat',
@@ -85,14 +88,19 @@ const Banner = () => {
                                 color: 'rgb(255, 255, 255)',
                                 padding: '40px',
                                 margin: '0 35px',
+                                marginTop: isMobile ? '40px' : "0px",
                                 border: '0px',
                                 outline: '0px',
                                 boxSizing: 'border-box',
                                 height: "100%",
+
                             }}
-                            className="mb-8 p-6 text-shadow-lg rounded-lg"
+
+
+
                         >
-                            <div className="flex justify-center mb-4">
+
+                            <div className="flex justify-center mb-4  ">
                                 <img src={data.icon} alt={data.title} className="h-16 w-16" />
                             </div>
                             <div className="text-center">
@@ -109,6 +117,7 @@ const Banner = () => {
             </div>
 
         </div>
+
     );
 };
 
