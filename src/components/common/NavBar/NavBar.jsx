@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom'
+import { Menu, X } from 'lucide-react';
 
 
 
 const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer";
+
+
 const NavBar = () => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleNavBar = () => {
+        setIsOpen(!isOpen)
+    }
+
+
     return (
         <div className=" bg-white/20 ">
             <div className='container py-8 flex flex-col xl:flex-row justify-between px-4 xl:px-0'>
@@ -16,7 +27,7 @@ const NavBar = () => {
                     </a>
                 </div>
 
-                <div className=" flex gap-x-4 items-center whitespace-nowrap">
+                <div className=" hidden justify-between md:flex  gap-x-4 items-center whitespace-nowrap">
                     <NavigationLink href="/">HOME</NavigationLink>
                     <NavigationLink href="/meetings" >MEETINGS</NavigationLink>
                     <NavigationLink to="apply" smooth={true} duration={500}>
@@ -40,9 +51,18 @@ const NavBar = () => {
                     </NavigationLink>
                     <NavigationLink href="/login" >LOGIN</NavigationLink>
                     <NavigationLink to="/signup" >SIGN UP</NavigationLink>
+
+                </div>
+                <div className='md:hidden sm:block  pt-2 absolute  h-[40px] w-8 right-[40px]  left-[471px]'>
+                    <button className=' text-[16px] text-white leading-6  ' onClick={toggleNavBar}
+
+                    >{isOpen ? <X /> : <Menu />} </button>
+
                 </div>
             </div>
+
         </div>
+
 
     )
 }
