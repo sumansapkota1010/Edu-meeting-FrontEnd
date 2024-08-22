@@ -34,22 +34,15 @@ const NavBar = () => {
                     <NavigationLink to="apply" smooth={true} duration={500}>
                         APPLY NOW
                     </NavigationLink>
-                    <div className="relative flex justify-center">
-                        <button
-                            className="flex items-center text-white focus:outline-none"
-                            onClick={toggleDropdown}
-                        >
+                    <div className="relative group">
+                        <div className={`${NavLinkClasses} flex items-center`}>
                             PAGES
-                            <ChevronDown className={`ml-1 transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        {isDropdownOpen && (
-                            <div
-                                className={`absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded transform transition-all duration-300 ease-in-out opacity-100 scale-100`}
-                            >
-                                <Link to="/meetings" className="mobile-nav-dropdown-link">Upcoming Meetings</Link>
-                                <Link to="/meetingDetails" className="mobile-nav-dropdown-link">Meeting Details</Link>
-                            </div>
-                        )}
+                            <FaChevronDown className="ml-1" />
+                        </div>
+                        <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded opacity-0 scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100">
+                            <Link to="/meetings" className="block px-4 py-2 text-black hover:text-[#f5a425]">Upcoming Meetings</Link>
+                            <Link to="/meetingDetails" className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</Link>
+                        </div>
                     </div>
 
                     <NavigationLink to="courses" smooth={true} duration={500}>
