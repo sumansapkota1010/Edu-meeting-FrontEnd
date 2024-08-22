@@ -18,3 +18,19 @@
 .slick-slide > div {
   margin: 0 10px;
 }
+
+.mobile-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 50px;
+  text-decoration: none;
+  color: rgb(245, 164, 37);
+  text-align: center;
+  background-color: #f7f7f7;
+  height: 50px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  z-index: 9999;
+}

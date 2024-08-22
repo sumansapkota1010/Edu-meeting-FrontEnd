@@ -1,7 +1,10 @@
 import React from 'react'
 import BackgroundVideo from './BackgroundVideo/BackgroundVideo'
 import { Outlet } from 'react-router-dom'
-import Banner from '../Main/ApplyNow/Banner/Banner'
+import Banner from '../Main/Banner/Banner'
+import ApplyNow from '../Main/ApplyNow/ApplyNow'
+
+
 
 const Layout = () => {
     return (
