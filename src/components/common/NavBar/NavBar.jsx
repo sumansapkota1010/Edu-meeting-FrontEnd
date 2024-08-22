@@ -51,6 +51,7 @@ const NavBar = () => {
                             </div>
                         )}
                     </div>
+
                     <NavigationLink to="courses" smooth={true} duration={500}>
                         COURSES
                     </NavigationLink>
@@ -69,6 +70,8 @@ const NavBar = () => {
 
                 {isOpen && (
                     <div className="mobile-nav">
+                        <MobileNavigationLink href="/">HOME</MobileNavigationLink>
+                        <MobileNavigationLink href="/meetings">MEETINGS</MobileNavigationLink>
                         <MobileNavigationLink to="apply" smooth={true} duration={500}>
                             APPLY NOW
                         </MobileNavigationLink>

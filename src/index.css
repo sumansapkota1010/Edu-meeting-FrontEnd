@@ -59,7 +59,7 @@
   }
 
   .mobile-nav-dropdown-link {
-    display: block;
+    display: flex;
     padding: 12px 15px;
     color: rgb(25, 26, 32);
     font-weight: 500;
