@@ -24,7 +24,7 @@ const MeetingCards = () => {
   }, []);
 
   return (
-    <div className="container leading-10 mt-0 mb-[50px] pb-10 border-b border-[#fafafa26] rounded-lg grid grid-cols-1 xl:grid-cols-2 gap-3">
+    <div className="container leading-10 mt-0 mb-[50px] pb-10 rounded-lg grid grid-cols-1 xl:grid-cols-2 gap-3">
       {meetings.slice(0, 4).map((meeting) => {
         const { month, day } = formatDate(meeting.date);
         return (
