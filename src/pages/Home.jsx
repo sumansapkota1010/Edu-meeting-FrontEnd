@@ -9,15 +9,15 @@ const Home = () => {
     return (
         <>
 
-            <section id="apply">
+            <div id="apply">
                 <ApplyNow />
-            </section>
-            <section id="contactus">
+            </div>
+            <div id="contactus">
                 <ContactUs />
-            </section>
-            <section id="courses">
+            </div>
+            <div id="courses">
                 <Courses />
-            </section>
+            </div>
         </>
     );
 };
