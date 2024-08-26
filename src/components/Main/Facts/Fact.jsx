@@ -20,7 +20,7 @@ const Fact = () => {
                                 <div className="flex flex-wrap">
                                     <div className="w-full">
                                         <div className="text-center bg-white/15 rounded-[20px] p-[25px_30px_35px_30px] my-[15px]">
-                                            <div className="text-[36px] text-[#f5a425] font-bold my-[5px]">
+                                            <div className="factClass">
                                                 <CountUp start={0} end={94} ></CountUp>  <span className="ml-[3px]">%</span>
                                             </div>
                                             <div className="text-[18px] font-medium text-white tracking-[0.5px]">
@@ -30,7 +30,7 @@ const Fact = () => {
                                     </div>
                                     <div className="w-full">
                                         <div className="text-center bg-white/15 rounded-[20px] p-[25px_30px_35px_30px] my-[15px]">
-                                            <div className="text-[36px] text-[#f5a425] font-bold my-[5px]">
+                                            <div className="factClass">
                                                 <CountUp start={0} end={126}></CountUp></div>
                                             <div className="text-[18px] font-medium text-white tracking-[0.5px]">
                                                 Current Teachers
@@ -43,7 +43,7 @@ const Fact = () => {
                                 <div className="flex flex-wrap pl-3 pr-3">
                                     <div className="w-full">
                                         <div className="text-center bg-white/15 rounded-[20px] p-[25px_30px_35px_30px] my-[15px] mt-[45px]">
-                                            <div className="text-[36px] text-[#f5a425] font-bold my-[5px]">
+                                            <div className="factClass">
                                                 <CountUp start={0} end={2345}></CountUp>
                                             </div>
                                             <div className="text-[18px] font-medium text-white tracking-[0.5px]">
@@ -53,7 +53,7 @@ const Fact = () => {
                                     </div>
                                     <div className="w-full">
                                         <div className="text-center bg-white/15 rounded-[20px] p-[25px_30px_35px_30px] my-[15px]">
-                                            <div className="text-[36px] text-[#f5a425] font-bold my-[5px]">
+                                            <div className="factClass">
                                                 <CountUp start={0} end={32}></CountUp>
                                             </div>
                                             <div className="text-[18px] font-medium text-white tracking-[0.5px]">Awards</div>
