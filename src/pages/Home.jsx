@@ -12,12 +12,13 @@ const Home = () => {
             <div id="apply">
                 <ApplyNow />
             </div>
-            <div id="contactus">
-                <ContactUs />
-            </div>
             <div id="courses">
                 <Courses />
             </div>
+            <div id="contactus">
+                <ContactUs />
+            </div>
+
         </>
     );
 };
