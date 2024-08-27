@@ -9,14 +9,13 @@ import UpcommingMeetings from './meetings/UpcommingMeetings'
 
 
 
+
 const Layout = () => {
     return (
         <>
             <BackgroundVideo />
             <Banner />
             <UpcommingMeetings />
-
-
 
             <Outlet />
 
