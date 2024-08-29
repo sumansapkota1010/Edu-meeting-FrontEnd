@@ -24,6 +24,7 @@
     "react-router-dom": "^6.26.0",
     "react-scroll": "^1.9.0",
     "react-slideshow-image": "^4.3.1",
+    "react-toastify": "^10.0.5",
     "swiper": "^11.1.10"
   },
   "devDependencies": {

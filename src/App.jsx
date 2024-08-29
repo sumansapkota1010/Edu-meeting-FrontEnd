@@ -6,6 +6,7 @@ import Meeting from "./pages/Meeting";
 import MeetingDetails from "./pages/MeetingDetails";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
       element: <SignUp />,
     },
   ]);
-
+  <ToastContainer />
   return (
     <>
       <RouterProvider router={router} />
