@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { STATUSES } from '../globals/misc/statuses';
+import { loginUser } from '../../store/authSlice';
+
 
 const LoginPage = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { data, status } = useSelector((state) => state.auth)
+    console.log(data, status)
+
     const [userData, setUserData] = useState({
         email: "",
         password: ""
@@ -21,26 +29,21 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:5000/api/login', userData);
-            console.log(response)
 
-            if (response.status === 200) {
-                toast.success(response.data.message);
-                setTimeout(() => {
-                    navigate('/');
-                }, 1000);
+        dispatch(loginUser(userData))
+        if (status === STATUSES.SUCCESS) {
+            toast.success('Login Successful');
 
-            } else {
-                toast.error(response.data.message);
-            }
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                toast.error(error.response.data.message);
-            } else {
-                toast.error("An unexpected error occurred");
-            }
+            setTimeout(() => {
+                return navigate('/');
+            }, 1000);
         }
+        if (status === STATUSES.ERROR) {
+            toast.error("Something went wrong, Try again")
+            return
+        }
+
+
     };
 
     return (

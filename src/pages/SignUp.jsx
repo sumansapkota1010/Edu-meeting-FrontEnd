@@ -3,8 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../../store/authSlice';
+import { STATUSES } from '../globals/misc/statuses';
 
 const SignUp = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { status } = useSelector((state) => state.auth)
+    console.log(status)
     const [userData, setUserData] = useState({
         username: "",
         email: "",
@@ -12,7 +19,6 @@ const SignUp = () => {
         phonenumber: ""
     });
 
-    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,32 +30,26 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:5000/api/register', userData);
 
-            if (response.status === 201) {
-                toast.success('Signup successful');
-                setUserData({
-                    username: "",
-                    email: "",
-                    password: "",
-                    phonenumber: ""
-                });
-                setTimeout(() => {
-                    navigate('/login');
-                }, 1000);
-            } else {
-                toast.error(response.data.message || 'Something went wrong');
-            }
-        } catch (error) {
 
-            if (error.response && error.response.data && error.response.data.message) {
-                toast.error(error.response.data.message);
-            } else {
-
-                toast.error("An unexpected error occurred");
-            }
+        dispatch(registerUser(userData))
+        if (status === STATUSES.SUCCESS) {
+            toast.success('Signup successful');
+            setUserData({
+                username: "",
+                email: "",
+                password: "",
+                phonenumber: ""
+            });
+            setTimeout(() => {
+                return navigate('/login');
+            }, 1000);
         }
+        if (status === STATUSES.ERROR) {
+            toast.error("Something went wrong")
+            return
+        }
+
     };
 
     return (

@@ -6,6 +6,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 
 const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer";
 
+
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -51,6 +52,9 @@ const NavBar = () => {
                     <NavigationLink to="contactus" smooth={true} duration={500}>
                         CONTACT US
                     </NavigationLink>
+                    {
+
+                    }
                     <NavigationLink href="/login">LOGIN</NavigationLink>
                     <NavigationLink href="/signup">SIGN UP</NavigationLink>
                 </div>
