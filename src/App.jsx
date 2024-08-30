@@ -20,14 +20,11 @@ function App() {
           path: "",
           element: <Home />,
         },
+
         {
-          path: "meetings",
-          element: <Meeting />,
-        },
-        {
-          path: "meetings/:meetingdetails",
-          element: <MeetingDetails />,
-        },
+          path: "/admin",
+          element: <ProtectedRoute> <AdminDashboard /> </ProtectedRoute>
+        }
       ],
 
     },
@@ -40,9 +37,14 @@ function App() {
       element: <SignUp />,
     },
     {
-      path: "/admin",
-      element: <ProtectedRoute> <AdminDashboard /> </ProtectedRoute>
-    }
+      path: "meetings",
+      element: <Meeting />,
+    },
+    {
+      path: "meetings/:meetingdetails",
+      element: <MeetingDetails />,
+    },
+
   ]);
   <ToastContainer />
   return (
