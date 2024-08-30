@@ -29,21 +29,19 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        dispatch(loginUser(userData))
-        if (status === STATUSES.SUCCESS) {
-
-         
-            toast.success('Login Successful');
-
-
-            setTimeout(() => {
-                return navigate('/');
-            }, 1000);
-        }
-        if (status === STATUSES.ERROR) {
-            toast.error("Something went wrong, Try again")
-            return
+        try {
+            dispatch(loginUser(userData))
+            // Check if the token is present
+            if (token && status === STATUSES.SUCCESS) {
+                toast.success('Login Successful');
+                setTimeout(() => {
+                    navigate('/');
+                }, 1000);
+            } else if (status === STATUSES.ERROR) {
+                toast.error("Something went wrong, Try again");
+            }
+        } catch (error) {
+            toast.error("Something went wrong, Try again");
         }
 
 

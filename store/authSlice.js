@@ -7,7 +7,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     data: null,
-    status: STATUSES.SUCCESS,
+    status: STATUSES.LOADING,
     token: "",
   },
   reducers: {
@@ -21,11 +21,9 @@ const authSlice = createSlice({
       state.token = action.payload;
     },
     LogOut(state) {
-      console.log("Logging out, resetting state...");
       state.data = null;
       state.token = null;
       state.status = STATUSES.SUCCESS;
-      console.log("State after logout:", state);
     },
   },
 });
