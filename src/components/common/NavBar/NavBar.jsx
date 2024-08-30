@@ -53,9 +53,11 @@ const NavBar = () => {
                         CONTACT US
                     </NavigationLink>
                     {
-
+                        (localStorage.getItem('token') === "" || localStorage.getItem('token') === null || localStorage.getItem('token') === undefined) ?
+                            <NavigationLink href="/login"  >LOGIN</NavigationLink> :
+                            <NavigationLink onClick={handleLogout} >Logout</NavigationLink>
                     }
-                    <NavigationLink href="/login">LOGIN</NavigationLink>
+
                     <NavigationLink href="/signup">SIGN UP</NavigationLink>
                 </div>
 
@@ -84,6 +86,7 @@ const NavBar = () => {
                                 <div
                                     className={`mobile-nav-dropdown opacity-100 scale-100 transform transition-all duration-300 ease-in-out`}
                                 >
+
                                     <Link to="/meetings" className="mobile-nav-dropdown-link">Upcoming Meetings</Link>
                                     <Link to="/meetingDetails" className="mobile-nav-dropdown-link">Meeting Details</Link>
                                 </div>
@@ -103,9 +106,9 @@ const NavBar = () => {
         </div>
     );
 };
-const NavigationLink = ({ href, to, children, smooth, duration }) => (
+const NavigationLink = ({ href, onClick, to, children, smooth, duration }) => (
     to ? (
-        <ScrollLink to={to} smooth={smooth} duration={duration} className={NavLinkClasses}>
+        <ScrollLink to={to} onClick={onClick} smooth={smooth} duration={duration} className={NavLinkClasses}>
             {children}
         </ScrollLink>
     ) : (

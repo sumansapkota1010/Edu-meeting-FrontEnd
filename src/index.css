@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,16 +7,19 @@
   .container {
     @apply mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px];
   }
-}
-@layer base {
-  body {
-    font-family: "Poppins", sans-serif;
+
+  .factClass {
+    @apply text-[36px] text-[#f5a425] font-bold my-[5px];
+  }
+
+  .NavLinkClasses {
+    @apply text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer;
   }
 }
 
-@layer components {
-  .factClass {
-    @apply text-[36px] text-[#f5a425] font-bold my-[5px];
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
   }
 }
 

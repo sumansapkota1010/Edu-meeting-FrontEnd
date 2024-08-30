@@ -11,8 +11,8 @@ import { loginUser } from '../../store/authSlice';
 const LoginPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { data, status } = useSelector((state) => state.auth)
-    console.log(data, status)
+    const { data, status, token } = useSelector((state) => state.auth)
+    console.log(data, status, token)
 
     const [userData, setUserData] = useState({
         email: "",
@@ -32,7 +32,10 @@ const LoginPage = () => {
 
         dispatch(loginUser(userData))
         if (status === STATUSES.SUCCESS) {
+
+         
             toast.success('Login Successful');
+
 
             setTimeout(() => {
                 return navigate('/');

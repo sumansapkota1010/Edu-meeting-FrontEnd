@@ -7,6 +7,8 @@ import MeetingDetails from "./pages/MeetingDetails";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import { ToastContainer } from "react-toastify";
+import AdminDashboard from "./pages/admin/adminDashboard";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,8 +28,6 @@ function App() {
           path: "meetings/:meetingdetails",
           element: <MeetingDetails />,
         },
-
-
       ],
 
     },
@@ -39,6 +39,10 @@ function App() {
       path: "signup",
       element: <SignUp />,
     },
+    {
+      path: "/admin",
+      element: <ProtectedRoute> <AdminDashboard /> </ProtectedRoute>
+    }
   ]);
   <ToastContainer />
   return (
