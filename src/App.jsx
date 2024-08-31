@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import AdminDashboard from "./pages/admin/adminDashboard";
 
 import { useSelector } from "react-redux";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
 
@@ -29,10 +30,7 @@ function App() {
           element: <Home />,
         },
 
-        {
-          path: "admin",
-          element: <AdminDashboard />
-        }
+
       ],
 
     },
@@ -52,7 +50,11 @@ function App() {
       path: "meetings/:meetingdetails",
       element: <MeetingDetails />,
     },
-
+    {
+      path: "admin",
+      element: <ProtectedRoute><AdminDashboard />
+      </ProtectedRoute>
+    }
 
   ]);
   <ToastContainer />
