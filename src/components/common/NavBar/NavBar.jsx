@@ -6,7 +6,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile, LogOut } from '../../../../store/authSlice';
 
-const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer";
+const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-[14px] font-medium py-2 tracking-[1px] cursor-pointer";
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const NavBar = () => {
     };
 
     const toggleDropdown = () => {
+
         setIsDropdownOpen(!isDropdownOpen);
     };
 
@@ -38,14 +39,14 @@ const NavBar = () => {
 
     return (
         <div className="bg-white/20">
-            <div className='container py-8 flex flex-col xl:flex-row justify-between px-4 xl:px-0'>
-                <div className="flex items-center">
-                    <a href="#" className="text-[#ffffff] text-[28px] font-poppins font-bold whitespace-nowrap">
+            <div className='container py-8 flex flex-col xl:flex-row justify-between px-4 xl:px-0 '>
+                <div className="flex items-center h-[100]">
+                    <a href="#" className="text-[#ffffff] text-[28px] font-poppins font-bold whitespace-nowrap tracking-wider ">
                         EDU MEETING
                     </a>
                 </div>
 
-                <div className="hidden justify-between md:flex gap-x-4 items-center whitespace-nowrap">
+                <div className="hidden justify-between md:flex gap-x-4 items-center  whitespace-nowrap ">
                     <NavigationLink href="/" >HOME</NavigationLink>
                     <NavigationLink href="/meetings">MEETINGS</NavigationLink>
                     <NavigationLink to="apply" smooth={true} duration={500}>

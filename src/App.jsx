@@ -47,6 +47,10 @@ function App() {
       element: <Meeting />,
     },
     {
+      path: "meetings/category/:category",
+      element: <Meeting />
+    },
+    {
       path: "meetings/:meetingdetails",
       element: <MeetingDetails />,
     },

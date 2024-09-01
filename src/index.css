@@ -16,6 +16,13 @@
     @apply text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425] text-sm font-medium py-2 cursor-pointer;
   }
 }
+.activeListClass {
+  @apply bg-[#a12c2f] text-white text-[13px] py-[11px] px-[30px] inline-block rounded-[22px] font-semibold uppercase transition duration-300 cursor-pointer mx-[3px] border-0 outline-none list-none box-border;
+}
+
+.listClass {
+  @apply text-[13px] text-[#a12c2f] bg-white py-[11px] px-[30px] inline-block rounded-[22px] font-semibold uppercase transition duration-300 cursor-pointer mx-[3px] border-0 outline-none list-none box-border;
+}
 
 @layer base {
   body {
