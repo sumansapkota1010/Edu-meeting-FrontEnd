@@ -81,6 +81,11 @@ const Meeting = () => {
         setPage(pageNumber);
     };
 
+    const handleClick = (meetingId) => {
+        navigate(`/meetings/${meetingId}`);
+    }
+
+
     const renderPageNumbers = () => {
         const pages = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -155,6 +160,7 @@ const Meeting = () => {
                             return (
                                 <div
                                     key={meeting._id}
+                                    onClick={() => handleClick(meeting._id)}
                                     className='flex flex-col justify-between bg-white rounded-2xl overflow-hidden shadow-md'
                                 >
                                     <div className='relative'>

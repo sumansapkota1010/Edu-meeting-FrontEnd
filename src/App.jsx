@@ -51,7 +51,7 @@ function App() {
       element: <Meeting />
     },
     {
-      path: "meetings/:meetingdetails",
+      path: "meetings/:id",
       element: <MeetingDetails />,
     },
     {
