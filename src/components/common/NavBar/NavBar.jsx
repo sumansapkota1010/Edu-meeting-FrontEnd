@@ -40,8 +40,8 @@ const NavBar = () => {
     return (
         <div className="bg-white/20">
             <div className='container py-8 flex flex-col xl:flex-row justify-between px-4 xl:px-0 '>
-                <div className="flex items-center h-[100]">
-                    <a href="#" className="text-[#ffffff] text-[28px] font-poppins font-bold whitespace-nowrap tracking-wider ">
+                <div className="flex items-center align-middle  h-[100]">
+                    <a href="#" className="  text-[#ffffff] text-[28px] font-poppins font-bold whitespace-nowrap tracking-wider ">
                         EDU MEETING
                     </a>
                 </div>
