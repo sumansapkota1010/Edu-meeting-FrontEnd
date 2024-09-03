@@ -3,8 +3,9 @@ import headingBg from '../assets/heading-bg.jpg';
 import meetingBg from '../assets/meetings-bg.jpg';
 import TopHeader from '../components/common/TopHeader/TopHeader';
 import NavBar from '../components/common/NavBar/NavBar';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-scroll';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -18,6 +19,7 @@ const formatDate = (dateString) => {
 const MeetingDetails = () => {
     const { id } = useParams();
     const [meetingDetails, setMeetingDetails] = useState([]);
+    const navigate = useNavigate()
 
     const fetchDetails = async () => {
         const response = await axios.get(`http://localhost:5000/api/meetings/${id}`);
@@ -27,6 +29,11 @@ const MeetingDetails = () => {
     useEffect(() => {
         fetchDetails();
     }, []);
+
+    const handleClick = () => {
+        navigate('/meetings')
+    }
+
 
     return (
         <div>
@@ -141,6 +148,11 @@ const MeetingDetails = () => {
                                     </a>
                                 </div>
                             </div>
+
+                            <div className='flex'>
+                                <div className=' mx-auto px-12 py-3 text-center mt-7 text-sm text-white bg-[#A12C2F]  rounded-full font-medium uppercase transition duration-300 no-underline m-0 border-0 outline-none box-border' onClick={() => handleClick()}> Back to Meetings List</div>
+                            </div>
+
                         </div>
                     );
                 })}
