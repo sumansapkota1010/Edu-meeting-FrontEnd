@@ -1,22 +1,81 @@
-import React from 'react';
-import contactBg from '../../../assets/meetings-bg.jpg'
+import React, { useState } from 'react';
+import contactBg from '../../../assets/meetings-bg.jpg';
+import Footer from '../../common/footer/Footer';
+import axios from 'axios';
 
 const ContactUs = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+
+    const [responseMessage, setResponseMessage] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/contact", formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            setResponseMessage(response.data.message);
+            console.log(response.data.message);
+
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: '',
+            });
+        } catch (error) {
+            setResponseMessage(
+                error.response?.data?.message || 'An error occurred while sending the message.'
+            );
+            console.error(error.response?.data || error.message);
+        }
+    };
+
     return (
-        <section id="contact" className="bg-cover bg-center bg-fixed py-36"
-            style={{ backgroundImage: `url(${contactBg})` }}>
+        <section
+            id="contact"
+            className="bg-cover bg-center bg-fixed py-36"
+            style={{ backgroundImage: `url(${contactBg})` }}
+        >
             <div className="container mx-auto">
                 <div className="flex flex-wrap justify-between">
                     <div className="w-full lg:w-9/12">
                         <div className="bg-white rounded-2xl p-10">
-                            <form id="contact" action="" method="post">
-                                <h2 className="uppercase text-gray-800 border-b border-gray-200 mb-10 pb-5 text-lg font-bold">Let's get in touch</h2>
+                            <form id="contact" onSubmit={handleSubmit}>
+                                <h2 className="uppercase text-gray-800 border-b border-gray-200 mb-10 pb-5 text-lg font-bold">
+                                    Let's get in touch
+                                </h2>
+                                {responseMessage && (
+                                    <div className="mb-6 text-center text-red-500">
+                                        {responseMessage}
+                                    </div>
+                                )}
                                 <div className="flex flex-wrap -mx-2">
                                     <div className="w-full lg:w-1/3 px-2 mb-6">
                                         <input
                                             name="name"
                                             type="text"
                                             id="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
                                             placeholder="YOUR NAME...*"
                                             required
                                             className="w-full h-10 rounded-2xl bg-gray-100 text-gray-600 text-sm font-medium px-4 py-2 focus:outline-none mb-6"
@@ -27,6 +86,8 @@ const ContactUs = () => {
                                             name="email"
                                             type="email"
                                             id="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
                                             placeholder="YOUR EMAIL..."
                                             required
                                             className="w-full h-10 rounded-2xl bg-gray-100 text-gray-600 text-sm font-medium px-4 py-2 focus:outline-none mb-6"
@@ -37,6 +98,8 @@ const ContactUs = () => {
                                             name="subject"
                                             type="text"
                                             id="subject"
+                                            value={formData.subject}
+                                            onChange={handleChange}
                                             placeholder="SUBJECT...*"
                                             required
                                             className="w-full h-10 rounded-2xl bg-gray-100 text-gray-600 text-sm font-medium px-4 py-2 focus:outline-none mb-6"
@@ -46,6 +109,8 @@ const ContactUs = () => {
                                         <textarea
                                             name="message"
                                             id="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
                                             placeholder="YOUR MESSAGE..."
                                             required
                                             className="w-full h-36 rounded-2xl bg-gray-100 text-gray-600 text-sm font-medium px-4 py-4 focus:outline-none mb-6"
@@ -88,13 +153,7 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
-            <div className="footer mt-36 border-t border-opacity-25 pt-12 text-center text-white">
-                <p className="uppercase text-sm">
-                    Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-                    <br />
-                    Design: <a href="https://templatemo.com" target="_blank" rel="noopener noreferrer" className="text-yellow-500">TemplateMo</a>
-                </p>
-            </div>
+            <Footer />
         </section>
     );
 }
