@@ -11,6 +11,7 @@ import AdminDashboard from "./pages/admin/adminDashboard";
 
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import MeetingAllDetails from "./pages/MeetingAllDetails";
 
 function App() {
 
@@ -58,8 +59,11 @@ function App() {
       path: "admin",
       element: <ProtectedRoute><AdminDashboard />
       </ProtectedRoute>
+    },
+    {
+      path: "/meetingAllDetails",
+      element: <MeetingAllDetails />
     }
-
   ]);
   <ToastContainer />
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile, LogOut } from '../../../../store/authSlice';
@@ -14,6 +14,8 @@ const NavBar = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { id } = useParams()
+    console.log(id)
 
     const toggleNavBar = () => {
         setIsOpen(!isOpen);
@@ -36,6 +38,7 @@ const NavBar = () => {
     useEffect(() => {
         dispatch(fetchProfile())
     }, [dispatch])
+
 
     return (
         <div className="bg-white/20">
@@ -60,7 +63,8 @@ const NavBar = () => {
                         {isDropdownOpen && (
                             <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded opacity-100 scale-100 transform transition-all duration-300 ease-in-out">
                                 <Link to="/meetings" className="block px-4 py-2 text-black hover:text-[#f5a425]">Upcoming Meetings</Link>
-                                <Link to="/meetingDetails" className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</Link>
+
+                                <Link to={`/meetingAllDetails`} className="block px-4 py-2 text-black hover:text-[#f5a425]">Meeting Details</Link>
                             </div>
                         )}
                     </div>
