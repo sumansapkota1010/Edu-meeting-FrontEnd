@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProfile } from '../../store/authSlice'
 import { useLocation, Navigate } from 'react-router-dom'
+import AdminDashboard from './admin/adminDashboard'
 
 const ProtectedRoute = ({ children }) => {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
 
     if (location.pathname === "/admin") {
         return isAdmin ? (
-            <div>Admin Dashboard</div>
+            <AdminDashboard />
         ) : (
             <div>No Access</div>
         )
