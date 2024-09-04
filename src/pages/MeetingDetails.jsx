@@ -6,6 +6,7 @@ import NavBar from '../components/common/NavBar/NavBar';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-scroll';
+import Footer from '../components/common/footer/Footer';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -156,6 +157,7 @@ const MeetingDetails = () => {
                         </div>
                     );
                 })}
+                <Footer />
             </div>
         </div>
     );
