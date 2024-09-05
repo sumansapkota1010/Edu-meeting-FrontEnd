@@ -11,9 +11,9 @@ const formatDate = (dateString) => {
 };
 
 const getFirstLine = (text) => {
-  return text.split('.')[0] + '.'
+  const words = text.split(' ');
+  return words.slice(0, 11).join(' ') + (words.length > 11 ? '.' : "");
 }
-
 
 const MeetingCards = () => {
   const [meetings, setMeetings] = useState([]);

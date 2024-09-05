@@ -14,6 +14,10 @@ const formatDate = (dateString) => {
     const day = date.toLocaleDateString('en-US', dayOptions);
     return { month, day };
 };
+const getFirstLine = (text) => {
+    const words = text.split(' ');
+    return words.slice(0, 11).join(' ') + (words.length > 11 ? '.' : "");
+}
 
 const Meeting = () => {
     const { category = 'All Meetings' } = useParams();
@@ -85,7 +89,6 @@ const Meeting = () => {
         navigate(`/meetings/${meetingId}`);
     }
 
-
     const renderPageNumbers = () => {
         const pages = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -147,7 +150,8 @@ const Meeting = () => {
                     </ul>
                 </div>
 
-                <div className='container mx-auto px-3 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+
+                <div className='container mx-auto  px-3 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                     {loading ? (
                         <p className='text-center text-white'>Loading...</p>
                     ) : error ? (
@@ -158,24 +162,16 @@ const Meeting = () => {
                         meetings.map((meeting) => {
                             const { month, day } = formatDate(meeting.date);
                             return (
-                                <div
-                                    key={meeting._id}
-                                    onClick={() => handleClick(meeting._id)}
-                                    className='flex flex-col justify-between bg-white rounded-2xl overflow-hidden shadow-md'
-                                >
-                                    <div className='relative'>
-                                        <img
-                                            className='rounded-t-2xl h-40 md:h-56 w-full object-cover'
-                                            src={meeting.meetingImage}
-                                            alt={meeting.title}
-                                        />
-                                        <span className='absolute top-2 left-2 text-lg text-gray-800 font-semibold bg-white bg-opacity-90 px-3 py-1 rounded-md'>
-                                            ${meeting.price}
-                                        </span>
-                                    </div>
-                                    <div className='flex flex-col p-5 mt-2'>
+                                <div key={meeting._id} className='flex flex-col items-center'>
+                                    <img
+                                        onClick={() => handleClick(meeting._id)}
+                                        className='cursor-pointer border-0 outline-0 object-cover h-[223px] w-[385px] rounded-2xl overflow-hidden'
+                                        src={meeting.meetingImage}
+                                        alt={meeting.title}
+                                    />
+                                    <div className='flex flex-col bg-white  p-4 rounded-br-[20px] rounded-bl-[20px] lg:h-[146px] lg:w-[385px] shadow-md'>
                                         <div className='flex items-center'>
-                                            <h2 className=' uppercase text-sm font-semibold text-red-700'>
+                                            <h2 className='uppercase text-sm font-semibold text-red-700'>
                                                 {month}
                                                 <span className='block text-gray-800 text-2xl'>
                                                     {day}
@@ -185,8 +181,8 @@ const Meeting = () => {
                                                 {meeting.title}
                                             </h2>
                                         </div>
-                                        <p className='ml-20 text-gray-800 text-sm mt-[-10px] mb-4'>
-                                            {meeting.description}
+                                        <p className='ml-[53px] text-gray-800 text-sm mt-[-10px] mb-4'>
+                                            {getFirstLine(meeting.description)}
                                         </p>
                                     </div>
                                 </div>
@@ -216,6 +212,7 @@ const Meeting = () => {
                 )}
 
                 <div className='text-center text-white mt-4'>
+                    <p>Page {page} of {totalPages}</p>
                     <p>Total Meetings: {totalMeetings}</p>
                 </div>
             </div>
