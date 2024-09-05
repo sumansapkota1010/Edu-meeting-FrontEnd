@@ -6,7 +6,7 @@ const UpcomingMeetings = () => {
     return (
         <>
             <div
-                className="bg-black bg-cover bg-center bg-no-repeat bg-fixed px-6 pt-[50px] pb-[50px]"
+                className="bg-black bg-cover bg-center bg-no-repeat bg-fixed px-6 pt-[50px] pb-[50px] lg:h-[1287px] lg:w-[1903px]"
                 style={{ backgroundImage: `url(${meetingBg})` }}
             >
                 <div className="text-center">
