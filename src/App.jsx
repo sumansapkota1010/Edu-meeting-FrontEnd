@@ -12,7 +12,9 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import MeetingAllDetails from "./pages/MeetingAllDetails";
 
 import AdminPanel from "./pages/AdminPage/AdminDashboard/AdminPanel";
-import AdminMeetings from "./pages/AdminPage/AdminDashboard/AdminMeetings";
+import AdminMeetings from "./pages/AdminPage/AdminDashboard/AdminMeetings/AdminMeetings";
+import MeetingsController from "./pages/AdminPage/AdminDashboard/MeetingsController";
+import CreateMeeting from "./pages/AdminPage/AdminDashboard/AdminMeetings/CreateMeeting";
 
 
 
@@ -40,11 +42,34 @@ function App() {
       path: "admin/meetings",
       element: (
         <ProtectedRoute>
+          <MeetingsController />
+        </ProtectedRoute>
+      ),
+
+    },
+    {
+      path: "admin/meetings/create",
+      element: (
+        <ProtectedRoute>
+          <CreateMeeting />
+        </ProtectedRoute>
+      ),
+
+    },
+
+    {
+      path: "admin/meetings/managemeetings",
+      element: (
+        <ProtectedRoute>
           <AdminMeetings />
         </ProtectedRoute>
       ),
 
     },
+
+
+
+
     { path: "/meetingAllDetails", element: <MeetingAllDetails /> },
   ]);
 
