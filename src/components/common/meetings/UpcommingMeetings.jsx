@@ -17,7 +17,7 @@ const UpcomingMeetings = () => {
 
                 <div className=" container flex flex-col lg:flex-row lg:justify-between">
 
-                    <div className="lg:w-1/3 xl:w-[320px]">
+                    <div className="xl:h-[437px] xl:w-[400px] p-[40px]">
                         <div className="bg-white rounded-[20px] p-6 mb-8">
                             <h4 className="text-lg font-semibold text-[#1f272b] mt-0 mb-[30px] pb-[20px] border-b border-[#eee]">
                                 Meeting Categories
@@ -65,10 +65,10 @@ const UpcomingMeetings = () => {
                                     </a>
                                 </li>
                             </ul>
-                            <div className="border-t border-[#eee] pt-[30px] mt-[15px]">
+                            <div className="w-full text-center text-xs text-white bg-[#a12c2f] py-3 px-7 inline-block rounded-full font-medium uppercase transition duration-300 no-underline m-0 border-0 outline-none box-border hover:opacity-90 hover:text-[#ffcc33]">
                                 <a
                                     href="/meetings"
-                                    className="w-full text-center bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300"
+                                    className="w-full text-center  text-white py-2 px-4 rounded  transition duration-300"
                                 >
                                     All Upcoming Meetings
                                 </a>
