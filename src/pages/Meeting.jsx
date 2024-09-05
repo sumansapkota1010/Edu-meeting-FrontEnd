@@ -5,6 +5,7 @@ import meetingBg from '../assets/meetings-bg.jpg';
 import NavBar from '../components/common/NavBar/NavBar';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Footer from '../components/common/footer/Footer';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -142,7 +143,7 @@ const Meeting = () => {
                             <li
                                 key={cat}
                                 onClick={() => navigate(`/meetings/category/${cat}`)}
-                                className={`cursor-pointer ${category === cat ? 'bg-[#a12c2f] text-white' : 'bg-gray-700 text-white'} px-4 py-2 rounded-md text-sm md:text-base transition duration-300`}
+                                className={`cursor-pointer ${category === cat ? 'bg-[#a12c2f] text-white' : 'bg-gray-700 text-white'} px-4 py-2 rounded-[22px] mb-[3px] text-sm md:text-base transition duration-300`}
                             >
                                 {cat}
                             </li>
@@ -162,10 +163,10 @@ const Meeting = () => {
                         meetings.map((meeting) => {
                             const { month, day } = formatDate(meeting.date);
                             return (
-                                <div key={meeting._id} className='flex flex-col items-center'>
+                                <div key={meeting._id} className='flex flex-col items-center mb-[30px] '>
                                     <img
                                         onClick={() => handleClick(meeting._id)}
-                                        className='cursor-pointer border-0 outline-0 object-cover h-[223px] w-[385px] rounded-2xl overflow-hidden'
+                                        className='cursor-pointer border-0 outline-0 object-cover h-[223px] w-[385px]  overflow-hidden'
                                         src={meeting.meetingImage}
                                         alt={meeting.title}
                                     />
@@ -215,7 +216,9 @@ const Meeting = () => {
                     <p>Page {page} of {totalPages}</p>
                     <p>Total Meetings: {totalMeetings}</p>
                 </div>
+                <Footer />
             </div>
+
         </div>
     );
 };

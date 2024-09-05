@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -17,6 +18,7 @@ const getFirstLine = (text) => {
 
 const MeetingCards = () => {
   const [meetings, setMeetings] = useState([]);
+  const navigate = useNavigate()
 
   const fetchApi = async () => {
     const response = await axios.get('http://localhost:5000/api/meetings');
@@ -27,6 +29,10 @@ const MeetingCards = () => {
   useEffect(() => {
     fetchApi();
   }, []);
+
+  const handleClick = (meetingId) => {
+    navigate(`/meetings/${meetingId}`);
+  }
 
   return (
     <div className="container leading-10 mt-0 mb-[50px] pb-10 rounded-lg grid grid-cols-1 xl:grid-cols-2 gap-5">
@@ -40,6 +46,7 @@ const MeetingCards = () => {
           >
             <div className="relative lg:h-[241px] lg:w-[416px]">
               <img
+                onClick={() => handleClick(meeting._id)}
                 className="rounded-t-[20px] align-middle m-0 p-0 border-0 outline-0 object-cover h-full w-full"
                 src={meeting.meetingImage}
                 alt={meeting.title}
