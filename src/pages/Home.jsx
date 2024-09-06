@@ -6,6 +6,7 @@ import Courses from '../components/Main/Courses/Courses';
 import Fact from '../components/Main/Facts/Fact';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from '../components/common/footer/Footer';
 
 
 const Home = () => {
@@ -23,7 +24,12 @@ const Home = () => {
             <div id="contactus">
                 <ContactUs />
             </div>
+
+            <Footer />
+
+
             <ToastContainer />
+
 
         </>
     );
