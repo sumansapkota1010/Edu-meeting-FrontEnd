@@ -16,6 +16,10 @@ import AdminMeetings from "./pages/AdminPage/AdminDashboard/AdminMeetings/AdminM
 import MeetingsController from "./pages/AdminPage/AdminDashboard/MeetingsController";
 import CreateMeeting from "./pages/AdminPage/AdminDashboard/AdminMeetings/CreateMeeting";
 import EditMeeting from "./pages/AdminPage/AdminDashboard/AdminMeetings/EditMeeting";
+import EditCourse from "./pages/AdminPage/AdminDashboard/AdminCourses/EditCourse";
+import AdminCourses from "./pages/AdminPage/AdminDashboard/AdminCourses/AdminCourses";
+import CreateCourse from "./pages/AdminPage/AdminDashboard/AdminCourses/CreateCourse";
+import CourseController from "./pages/AdminPage/AdminDashboard/CourseController";
 
 
 
@@ -48,6 +52,7 @@ function App() {
       ),
 
     },
+
     {
       path: "admin/meetings/create",
       element: (
@@ -66,6 +71,15 @@ function App() {
       ),
 
     },
+    {
+      path: "admin/courses",
+      element: (
+        <ProtectedRoute>
+          <CourseController />
+        </ProtectedRoute>
+      ),
+
+    },
 
     {
       path: "admin/meetings/managemeetings",
@@ -76,6 +90,35 @@ function App() {
       ),
 
     },
+    {
+      path: "admin/courses/create",
+      element: (
+        <ProtectedRoute>
+          <CreateCourse />
+        </ProtectedRoute>
+      ),
+
+    },
+    {
+      path: "admin/courses/edit/:id",
+      element: (
+        <ProtectedRoute>
+          <EditCourse />
+        </ProtectedRoute>
+      ),
+
+    },
+
+    {
+      path: "admin/courses/managemeetings",
+      element: (
+        <ProtectedRoute>
+          <AdminCourses />
+        </ProtectedRoute>
+      ),
+
+    },
+
 
 
 
