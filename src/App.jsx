@@ -110,7 +110,7 @@ function App() {
     },
 
     {
-      path: "admin/courses/managemeetings",
+      path: "admin/courses/managecourses",
       element: (
         <ProtectedRoute>
           <AdminCourses />
