@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import formbg2 from '../../../../assets/formbg2.jpg';
+import form from '../../../../assets/form.png';
+
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -67,10 +69,13 @@ const EditMeeting = () => {
 
     return (
         <div
-            style={{ backgroundImage: `url(${formbg2})` }}
+            style={{ backgroundImage: `url(${form})` }}
             className="flex items-center justify-center w-full min-h-screen px-4 bg-cover bg-no-repeat"
         >
-            <div className="bg-red-100 p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto mt-8 lg:mt-12">
+            <div
+
+
+                className="bg-contain p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto mt-8 lg:mt-12">
                 <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Edit Meeting</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="mb-4">

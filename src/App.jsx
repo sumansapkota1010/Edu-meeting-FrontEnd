@@ -72,6 +72,15 @@ function App() {
 
     },
     {
+      path: "admin/meetings/managemeetings",
+      element: (
+        <ProtectedRoute>
+          <AdminMeetings />
+        </ProtectedRoute>
+      ),
+
+    },
+    {
       path: "admin/courses",
       element: (
         <ProtectedRoute>
@@ -81,15 +90,7 @@ function App() {
 
     },
 
-    {
-      path: "admin/meetings/managemeetings",
-      element: (
-        <ProtectedRoute>
-          <AdminMeetings />
-        </ProtectedRoute>
-      ),
 
-    },
     {
       path: "admin/courses/create",
       element: (

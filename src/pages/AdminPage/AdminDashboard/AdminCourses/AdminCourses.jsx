@@ -111,6 +111,12 @@ const AdminCourses = () => {
                 >
                     Create New Course
                 </Link>
+                <Link
+                    to="/admin/courses/"
+                    className=" ml-5 bg-red-500 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300"
+                >
+                    Courses
+                </Link>
             </div>
         </div>
     );

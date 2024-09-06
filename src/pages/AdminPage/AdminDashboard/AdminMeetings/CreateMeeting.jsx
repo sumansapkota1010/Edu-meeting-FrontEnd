@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import formbg2 from '../../../../assets/formbg2.jpg';
+import formBg4 from '../../../../assets/formBg4.jpg'
+import formBg3 from '../../../../assets/formBg3.jpg'
+import formBg5 from '../../../../assets/formBg5.jpg'
+import formbg from '../../../../assets/formbg.jpg'
+
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -63,11 +68,12 @@ const CreateMeeting = () => {
 
     return (
         <div
-            style={{ backgroundImage: `url(${formbg2})` }}
+            style={{ backgroundImage: `url(${formbg})` }}
             className="flex items-center justify-center w-full min-h-screen px-4 bg-cover bg-no-repeat"
         >
             <div
-                className="bg-red-100 p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto mt-8 lg:mt-12"
+                style={{ backgroundImage: `url(${formBg5})` }}
+                className="bg-content p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto mt-8 lg:mt-12"
             >
                 <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Create Meeting</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>
