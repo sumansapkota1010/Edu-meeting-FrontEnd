@@ -17,7 +17,7 @@ const CourseController = () => {
                     </li>
                     <li>
                         <Link
-                            to="/admin/courses/managemeetings"
+                            to="/admin/courses/managecourses"
                             className="block py-2 px-4 rounded-md text-lg font-semibold hover:bg-gray-700 transition-colors"
                         >
                             Manage Courses
