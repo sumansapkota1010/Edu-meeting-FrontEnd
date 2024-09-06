@@ -15,6 +15,7 @@ import AdminPanel from "./pages/AdminPage/AdminDashboard/AdminPanel";
 import AdminMeetings from "./pages/AdminPage/AdminDashboard/AdminMeetings/AdminMeetings";
 import MeetingsController from "./pages/AdminPage/AdminDashboard/MeetingsController";
 import CreateMeeting from "./pages/AdminPage/AdminDashboard/AdminMeetings/CreateMeeting";
+import EditMeeting from "./pages/AdminPage/AdminDashboard/AdminMeetings/EditMeeting";
 
 
 
@@ -52,6 +53,15 @@ function App() {
       element: (
         <ProtectedRoute>
           <CreateMeeting />
+        </ProtectedRoute>
+      ),
+
+    },
+    {
+      path: "admin/meetings/edit/:id",
+      element: (
+        <ProtectedRoute>
+          <EditMeeting />
         </ProtectedRoute>
       ),
 

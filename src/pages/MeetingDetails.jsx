@@ -25,6 +25,7 @@ const MeetingDetails = () => {
     const fetchDetails = async () => {
         const response = await axios.get(`http://localhost:5000/api/meetings/${id}`);
         setMeetingDetails(response.data.meetings);
+        console.log(response.data.meetings)
     };
 
     useEffect(() => {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminMeetings = () => {
     const [meetings, setMeetings] = useState([]);
+    const navigate = useNavigate()
     const token = localStorage.getItem('token');
 
     const fetchMeetings = async () => {
@@ -41,6 +42,10 @@ const AdminMeetings = () => {
         }
     };
 
+
+
+
+
     return (
         <div>
             <h2 className="text-xl font-semibold mb-4 text-center">Meetings</h2>
@@ -61,13 +66,16 @@ const AdminMeetings = () => {
                     ) : (
                         meetings.map(meeting => (
                             <tr key={meeting._id}>
+
                                 <td className="py-2 px-4 border-b">
                                     <img src={meeting.meetingImage} alt={meeting.title} className="w-16 h-16 object-cover" />
                                 </td>
                                 <td className="py-2 px-4 border-b">{meeting.title}</td>
                                 <td className="py-2 px-4 border-b">{meeting.category}</td> q
                                 <td className="py-2 px-4 border-b">
-                                    <button className="text-blue-500 hover:text-blue-700 mr-4">Edit</button>
+                                    <Link to={`/admin/meetings/edit/${meeting._id}`}
+
+                                        className="text-blue-500 hover:text-blue-700 mr-4">Edit</Link>
                                     <button
                                         onClick={() => handleDelete(meeting._id)}
                                         className="text-red-500 hover:text-red-700"
