@@ -9,7 +9,7 @@ import { loginUser, fetchProfile } from '../../store/authSlice';
 const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { data, status, token } = useSelector((state) => state.auth);
+    const { data, status, token, error } = useSelector((state) => state.auth);
 
     const [userData, setUserData] = useState({
         email: "",
@@ -17,7 +17,6 @@ const LoginPage = () => {
     });
 
     const [hasLoggedIn, setHasLoggedIn] = useState(false);
-    const [hasRedirected, setHasRedirected] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -39,7 +38,7 @@ const LoginPage = () => {
     }, [token, status, dispatch]);
 
     useEffect(() => {
-        if (data && data.role && !hasLoggedIn && !hasRedirected) {
+        if (status === STATUSES.SUCCESS && data && data.role && !hasLoggedIn) {
             toast.success('Login Successful');
             setHasLoggedIn(true);
 
@@ -49,10 +48,11 @@ const LoginPage = () => {
                 } else {
                     navigate('/');
                 }
-                setHasRedirected(true);
             }, 1000);
+        } else if (status === STATUSES.ERROR && !hasLoggedIn) {
+            toast.error('Login Unsuccessful. Please check your credentials and try again.');
         }
-    }, [data, hasLoggedIn, hasRedirected, navigate]);
+    }, [status, data, hasLoggedIn, navigate, error]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
