@@ -1,7 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { LogOut } from '../../../../store/authSlice';
 
 const AdminPanel = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(LogOut());
+        console.log("logout clicked");
+
+        localStorage.removeItem('token');
+        navigate("/login");
+    };
+
     return (
         <div className="flex">
             <div className="w-64 h-screen bg-gray-800 text-white p-5 shadow-lg">
@@ -22,6 +36,15 @@ const AdminPanel = () => {
                         >
                             Courses
                         </Link>
+                        <li>
+                            <Link
+                                onClick={handleLogout}
+                                to="/login"
+                                className="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                            >
+                                Logout
+                            </Link>
+                        </li>
                     </li>
                 </ul>
             </div>

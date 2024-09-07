@@ -12,6 +12,7 @@ const ProtectedRoute = ({ children }) => {
 
     const { data: user, loading } = useSelector((state) => state.auth)
 
+
     useEffect(() => {
         if (!user) {
             dispatch(fetchProfile())

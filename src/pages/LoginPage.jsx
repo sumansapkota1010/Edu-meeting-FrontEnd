@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { STATUSES } from '../globals/misc/statuses';
-import { loginUser } from '../../store/authSlice';
-
+import { loginUser, fetchProfile } from '../../store/authSlice';
 
 const LoginPage = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const { data, status, token } = useSelector((state) => state.auth)
-    console.log(data, status, token)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { data, status, token } = useSelector((state) => state.auth);
 
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     });
+
+    const [hasLoggedIn, setHasLoggedIn] = useState(false);
+    const [hasRedirected, setHasRedirected] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,25 +27,32 @@ const LoginPage = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            dispatch(loginUser(userData))
-            // Check if the token is present
-            if (token && status === STATUSES.SUCCESS) {
-                toast.success('Login Successful');
-                setTimeout(() => {
-                    navigate('/');
-                }, 1000);
-            } else if (status === STATUSES.ERROR) {
-                toast.error("Something went wrong, Try again");
-            }
-        } catch (error) {
-            toast.error("Something went wrong, Try again");
-        }
-
-
+        dispatch(loginUser(userData));
     };
+
+    useEffect(() => {
+        if (token && status === STATUSES.SUCCESS) {
+            dispatch(fetchProfile());
+        }
+    }, [token, status, dispatch]);
+
+    useEffect(() => {
+        if (data && data.role && !hasLoggedIn && !hasRedirected) {
+            toast.success('Login Successful');
+            setHasLoggedIn(true);
+
+            setTimeout(() => {
+                if (data.role === 'admin') {
+                    navigate('/admin');
+                } else {
+                    navigate('/');
+                }
+                setHasRedirected(true);
+            }, 1000);
+        }
+    }, [data, hasLoggedIn, hasRedirected, navigate]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
