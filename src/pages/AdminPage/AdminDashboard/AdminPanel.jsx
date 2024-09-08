@@ -36,6 +36,15 @@ const AdminPanel = () => {
                         >
                             Courses
                         </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/admin/contact"
+                            className="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                        >
+                            Contact
+                        </Link>
+                        <li />
                         <li>
                             <Link
                                 onClick={handleLogout}

@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
     }, [dispatch, user])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div>Loading...</div>    
     }
 
     const isAdmin = user?.userName === "admin"

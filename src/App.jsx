@@ -20,10 +20,12 @@ import EditCourse from "./pages/AdminPage/AdminDashboard/AdminCourses/EditCourse
 import AdminCourses from "./pages/AdminPage/AdminDashboard/AdminCourses/AdminCourses";
 import CreateCourse from "./pages/AdminPage/AdminDashboard/AdminCourses/CreateCourse";
 import CourseController from "./pages/AdminPage/AdminDashboard/CourseController";
+import AdminContact from "./pages/AdminPage/AdminDashboard/AdminContact/AdminContact";
 
 
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -119,6 +121,16 @@ function App() {
       ),
 
     },
+    {
+      path: "admin/contact",
+      element: (
+        <ProtectedRoute>
+          <AdminContact />
+        </ProtectedRoute>
+      ),
+
+    },
+
 
 
 
