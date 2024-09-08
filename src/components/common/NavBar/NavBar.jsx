@@ -11,6 +11,7 @@ const NavLinkClasses = "text-[#ffffff] hover:text-[#f5a425] active:text-[#f5a425
 const NavBar = () => {
     const dispatch = useDispatch();
     const { data: user } = useSelector((state) => state.auth);
+    console.log(user)
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -77,11 +78,17 @@ const NavBar = () => {
                     </NavigationLink>
                     {
                         (localStorage.getItem('token') === "" || localStorage.getItem('token') === null || localStorage.getItem('token') === undefined) ?
-                            <NavigationLink href="/login"  >LOGIN</NavigationLink> :
+                            <div>
+                                <NavigationLink href="/login">LOGIN </NavigationLink>
+
+                                <NavigationLink href="/signup">SIGN UP</NavigationLink>
+                            </div>
+
+                            :
                             <NavigationLink onClick={handleLogout}>Logout</NavigationLink>
                     }
 
-                    <NavigationLink href="/signup">SIGN UP</NavigationLink>
+
                 </div>
 
                 <div className='md:hidden sm:block pt-2 absolute h-[40px] w-8 right-[40px] left-[471px]'>

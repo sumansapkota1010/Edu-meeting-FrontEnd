@@ -33,18 +33,21 @@ export default authSlice.reducer;
 
 export function registerUser(data) {
   return async function registerUserThunk(dispatch) {
-    dispatch(setStatus(STATUSES.LOADING));
+    dispatch(setStatus({ status: STATUSES.LOADING }));
     try {
       const response = await axios.post(
         "http://localhost:5000/api/register",
         data
       );
+      console.log("Registration Response:", response.data);
       dispatch(setUser(response.data));
-      dispatch(setStatus(STATUSES.SUCCESS));
+      dispatch(setStatus({ status: STATUSES.SUCCESS }));
       return response.data;
     } catch (error) {
-      dispatch(setStatus(STATUSES.ERROR));
-      throw error;
+      const errorMessage = error.response?.data?.message || error.message;
+      dispatch(setStatus({ status: STATUSES.ERROR, error: errorMessage }));
+      console.error("Registration Error:", errorMessage);
+      throw new Error(errorMessage);
     }
   };
 }

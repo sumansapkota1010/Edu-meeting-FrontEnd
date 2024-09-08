@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../../store/authSlice';
-import { STATUSES } from '../globals/misc/statuses';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { STATUSES } from "../globals/misc/statuses";
+import { registerUser } from "../../store/authSlice";
 
 const SignUp = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const { status } = useSelector((state) => state.auth)
-    console.log(status)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { status, error } = useSelector((state) => state.auth);
+
     const [userData, setUserData] = useState({
         username: "",
         email: "",
         password: "",
         phonenumber: ""
     });
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,29 +25,42 @@ const SignUp = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(registerUser(userData));
+    };
 
+    useEffect(() => {
+        console.log("Status:", status);
+        console.log("Error:", error);
 
-        dispatch(registerUser(userData))
         if (status === STATUSES.SUCCESS) {
-            toast.success('Signup successful');
+            Swal.fire({
+                icon: 'success',
+                title: 'Signup successful!',
+                text: 'Redirecting to login page...',
+                timer: 2000,
+                showConfirmButton: false
+            });
+
             setUserData({
                 username: "",
                 email: "",
                 password: "",
                 phonenumber: ""
             });
-            setTimeout(() => {
-                return navigate('/login');
-            }, 1000);
-        }
-        if (status === STATUSES.ERROR) {
-            toast.error("Something went wrong")
-            return
-        }
 
-    };
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        } else if (status === STATUSES.ERROR) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Signup failed!',
+                text: error || "Something went wrong, please try again.",
+            });
+        }
+    }, [status, error, navigate]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -112,7 +122,6 @@ const SignUp = () => {
                         Sign Up
                     </button>
                 </form>
-                <ToastContainer />
             </div>
         </div>
     );

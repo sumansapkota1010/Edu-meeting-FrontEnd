@@ -21,6 +21,7 @@ import AdminCourses from "./pages/AdminPage/AdminDashboard/AdminCourses/AdminCou
 import CreateCourse from "./pages/AdminPage/AdminDashboard/AdminCourses/CreateCourse";
 import CourseController from "./pages/AdminPage/AdminDashboard/CourseController";
 import AdminContact from "./pages/AdminPage/AdminDashboard/AdminContact/AdminContact";
+import AdminUser from "./pages/AdminPage/AdminDashboard/Admin-user/AdminUser";
 
 
 
@@ -131,6 +132,15 @@ function App() {
 
     },
 
+    {
+      path: "admin/user",
+      element: (
+        <ProtectedRoute>
+          <AdminUser />
+        </ProtectedRoute>
+      ),
+
+    },
 
 
 

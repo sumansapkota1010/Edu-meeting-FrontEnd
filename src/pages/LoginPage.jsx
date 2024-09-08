@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 import { useDispatch, useSelector } from 'react-redux';
 import { STATUSES } from '../globals/misc/statuses';
 import { loginUser, fetchProfile } from '../../store/authSlice';
@@ -39,7 +38,14 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (status === STATUSES.SUCCESS && data && data.role && !hasLoggedIn) {
-            toast.success('Login Successful');
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Successful',
+                text: 'Redirecting to your dashboard...',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
             setHasLoggedIn(true);
 
             setTimeout(() => {
@@ -50,7 +56,11 @@ const LoginPage = () => {
                 }
             }, 1000);
         } else if (status === STATUSES.ERROR && !hasLoggedIn) {
-            toast.error('Login Unsuccessful. Please check your credentials and try again.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: error || 'Login Unsuccessful. Please check your credentials and try again.'
+            });
         }
     }, [status, data, hasLoggedIn, navigate, error]);
 
@@ -101,7 +111,6 @@ const LoginPage = () => {
                         <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</Link>
                     </div>
                 </form>
-                <ToastContainer />
             </div>
         </div>
     );
