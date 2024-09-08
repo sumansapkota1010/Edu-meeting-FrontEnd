@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'; // Import SweetAlert2
-import { useDispatch, useSelector } from 'react-redux';
-import { STATUSES } from '../globals/misc/statuses';
-import { loginUser, fetchProfile } from '../../store/authSlice';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const LoginPage = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { data, status, token, error } = useSelector((state) => state.auth);
-
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     });
 
-    const [hasLoggedIn, setHasLoggedIn] = useState(false);
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,44 +20,55 @@ const LoginPage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(userData));
-    };
+        setIsLoggingIn(true);
 
-    useEffect(() => {
-        if (token && status === STATUSES.SUCCESS) {
-            dispatch(fetchProfile());
-        }
-    }, [token, status, dispatch]);
+        try {
+            const loginResponse = await axios.post('http://localhost:5000/api/login', userData);
+            if (loginResponse.status === 200) {
+                const { data: { data: token } } = loginResponse;
 
-    useEffect(() => {
-        if (status === STATUSES.SUCCESS && data && data.role && !hasLoggedIn) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Login Successful',
-                text: 'Redirecting to your dashboard...',
-                timer: 1000,
-                timerProgressBar: true,
-                showConfirmButton: false
-            });
-            setHasLoggedIn(true);
+                localStorage.setItem('token', token);
 
-            setTimeout(() => {
-                if (data.role === 'admin') {
-                    navigate('/admin');
-                } else {
-                    navigate('/');
+                const profileResponse = await axios.get('http://localhost:5000/api/profile', {
+                    headers: { Authorization: `Bearer ${token}` }
+
+                });
+                console.log(loginResponse)
+                console.log(profileResponse.data)
+
+                if (profileResponse.status === 200) {
+                    const { role } = profileResponse.data.data;
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful',
+                        text: 'Redirecting to your dashboard...',
+                        timer: 1000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+
+                    setTimeout(() => {
+                        if (role === 'admin') {
+                            navigate('/admin');
+                        } else {
+                            navigate('/');
+                        }
+                    }, 1000);
                 }
-            }, 1000);
-        } else if (status === STATUSES.ERROR && !hasLoggedIn) {
+            }
+        } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Login Failed',
-                text: error || 'Login Unsuccessful. Please check your credentials and try again.'
+                text: error.response?.data?.message || 'Login Unsuccessful. Please check your credentials and try again.'
             });
+        } finally {
+            setIsLoggingIn(false);
         }
-    }, [status, data, hasLoggedIn, navigate, error]);
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -95,20 +101,21 @@ const LoginPage = () => {
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="text-sm">
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+                            <a href="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
                         </div>
                     </div>
                     <div>
                         <button
                             type="submit"
+                            disabled={isLoggingIn}
                             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Login
+                            {isLoggingIn ? 'Logging in...' : 'Login'}
                         </button>
                     </div>
                     <div className="text-sm text-center mt-4">
                         <span className="text-gray-600">Don't have an account? </span>
-                        <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</Link>
+                        <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a>
                     </div>
                 </form>
             </div>

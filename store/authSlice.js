@@ -31,7 +31,7 @@ const authSlice = createSlice({
 export const { setUser, setStatus, setToken, LogOut } = authSlice.actions;
 export default authSlice.reducer;
 
-export function registerUser(data) {
+/* export function registerUser(data) {
   return async function registerUserThunk(dispatch) {
     dispatch(setStatus({ status: STATUSES.LOADING }));
     try {
@@ -50,9 +50,9 @@ export function registerUser(data) {
       throw new Error(errorMessage);
     }
   };
-}
+} */
 
-export function loginUser(data) {
+/* export function loginUser(data) {
   return async function loginUserThunk(dispatch) {
     dispatch(setStatus(STATUSES.LOADING));
     try {
@@ -71,7 +71,7 @@ export function loginUser(data) {
     }
   };
 }
-
+ */
 export function fetchProfile() {
   return async function fetchProfileThunk(dispatch) {
     dispatch(setStatus(STATUSES.LOADING));

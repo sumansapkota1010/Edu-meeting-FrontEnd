@@ -1,66 +1,49 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { STATUSES } from "../globals/misc/statuses";
-import { registerUser } from "../../store/authSlice";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const SignUp = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { status, error } = useSelector((state) => state.auth);
-
+const Register = () => {
     const [userData, setUserData] = useState({
-        username: "",
-        email: "",
-        password: "",
-        phonenumber: ""
+        username: '',
+        email: '',
+        password: '',
+        phonenumber: ''
     });
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
         setUserData({
             ...userData,
-            [name]: value
+            [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(registerUser(userData));
-    };
-
-    useEffect(() => {
-        console.log("Status:", status);
-        console.log("Error:", error);
-
-        if (status === STATUSES.SUCCESS) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Signup successful!',
-                text: 'Redirecting to login page...',
-                timer: 2000,
-                showConfirmButton: false
-            });
-
-            setUserData({
-                username: "",
-                email: "",
-                password: "",
-                phonenumber: ""
-            });
-
-            setTimeout(() => {
-                navigate('/login');
-            }, 2000);
-        } else if (status === STATUSES.ERROR) {
+        try {
+            const response = await axios.post('http://localhost:5000/api/register', userData);
+            if (response.status === 201) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Signup Successful!',
+                    text: 'You will be redirected to the login page.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            }
+        } catch (error) {
             Swal.fire({
                 icon: 'error',
-                title: 'Signup failed!',
-                text: error || "Something went wrong, please try again.",
+                title: 'Signup Failed!',
+                text: 'Please try again.',
             });
         }
-    }, [status, error, navigate]);
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -127,4 +110,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;
