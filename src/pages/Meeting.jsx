@@ -152,7 +152,7 @@ const Meeting = () => {
                 </div>
 
 
-                <div className='container mx-auto  px-3 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                <div className='container mx-auto   px-3 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3  xl:gap-1 2xl:grid-cols-3 '>
                     {loading ? (
                         <p className='text-center text-white'>Loading...</p>
                     ) : error ? (
@@ -161,28 +161,28 @@ const Meeting = () => {
                         <p className='text-center text-white'>No meetings found.</p>
                     ) : (
                         meetings.map((meeting) => {
-                            const { month, day } = formatDate(meeting.date);
+                            const { month, day } = formatDate(meeting.date)
                             return (
-                                <div key={meeting._id} className='flex flex-col items-center mb-[30px] '>
+                                <div key={meeting._id} className='flex flex-col items-center mb-[30px] xl:h-[367px] xl:w-[353px] 2xl:h-[400px] 2xl:w-[409px]   '>
                                     <img
                                         onClick={() => handleClick(meeting._id)}
-                                        className='cursor-pointer border-0 outline-0 object-cover h-[223px] w-[385px]  overflow-hidden'
+                                        className='cursor-pointer border-0 outline-0 object-cover  sm:h-[301px] sm:w-[519px] md:h-[174px] md:w-[300px] lg:w-[408px] lg:h-[237px] xl:h-[191px] xl:w-[329px] 2xl:h-[223px] 2xl:w-[385px]   rounded-tl-[20px]  rounded-tr-[20px]  '
                                         src={meeting.meetingImage}
                                         alt={meeting.title}
                                     />
-                                    <div className='flex flex-col bg-white  p-4 rounded-br-[20px] rounded-bl-[20px] lg:h-[146px] lg:w-[385px] shadow-md'>
+                                    <div className='flex flex-col bg-white  p-4 rounded-br-[20px] rounded-bl-[20px] sm:h-[146px] sm:w-[519px] md:h-[220px] md:w-[300px] md:p-[30px] lg:h-[146px] lg:w-[408px] xl:h-[146px] xl:w-[329px] 2xl:h-[146px] 2xl:w-[385px]   shadow-md'>
                                         <div className='flex items-center'>
-                                            <h2 className='uppercase text-sm font-semibold text-red-700'>
+                                            <h2 className='uppercase text-sm font-semibold text-red-700 '>
                                                 {month}
                                                 <span className='block text-gray-800 text-2xl'>
                                                     {day}
                                                 </span>
                                             </h2>
-                                            <h2 className='ml-6 text-lg text-gray-800 font-semibold'>
+                                            <h2 className='md:mb-[15px]  ml-6  text-lg text-gray-800 font-semibold'>
                                                 {meeting.title}
                                             </h2>
                                         </div>
-                                        <p className='ml-[53px] text-gray-800 text-sm mt-[-10px] mb-4'>
+                                        <p className='md:ml-[50px] ml-[53px] text-gray-800 text-sm mt-[-10px]  '>
                                             {getFirstLine(meeting.description)}
                                         </p>
                                     </div>

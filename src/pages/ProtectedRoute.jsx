@@ -11,6 +11,7 @@ const ProtectedRoute = ({ children }) => {
     const location = useLocation()
 
     const { data: user, loading } = useSelector((state) => state.auth)
+    console.log(user)
 
 
     useEffect(() => {
@@ -20,22 +21,13 @@ const ProtectedRoute = ({ children }) => {
     }, [dispatch, user])
 
     if (loading) {
-        return <div>Loading...</div>    
+        return <div>Loading...</div>
     }
 
-    const isAdmin = user?.userName === "admin"
+    const isAdmin = user?.role === "admin"
 
 
-    if (location.pathname === "/admin") {
-        return isAdmin ? (
-            <AdminPanel />
-        ) : (
-            <div>No Access</div>
-        )
-    }
-
-
-    return children
+    return isAdmin ? children : <div> No Access </div>
 }
 
 export default ProtectedRoute

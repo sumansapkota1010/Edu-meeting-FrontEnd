@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const AdminUser = () => {
     const [users, setUsers] = useState([]);
@@ -76,7 +78,15 @@ const AdminUser = () => {
             ) : (
                 <p className="text-center text-gray-500">No users available.</p>
             )}
-        </div>
+            <li className='list-none flex justify-center text-center mt-14'>
+                <Link
+                    to="/admin/"
+                    className="  justify-center py-2 items-center rounded-md text-lg font-semibold whitespace-nowrap bg-gray-400 transition-colors"
+                >
+                    Admin Dashboard
+                </Link>
+            </li>
+        </div >
     );
 };
 
