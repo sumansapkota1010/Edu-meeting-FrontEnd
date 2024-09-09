@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import formbg2 from '../../../../assets/formbg2.jpg';
+
 
 import bg3 from '../../../../assets/bg3.jpg';
 

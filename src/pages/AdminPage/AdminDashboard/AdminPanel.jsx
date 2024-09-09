@@ -5,8 +5,8 @@ import { LogOut } from '../../../../store/authSlice';
 
 const AdminPanel = () => {
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(LogOut());
@@ -44,16 +44,23 @@ const AdminPanel = () => {
                         >
                             Contact
                         </Link>
-                        <li />
-                        <li>
-                            <Link
-                                onClick={handleLogout}
-                                to="/login"
-                                className="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
-                            >
-                                Logout
-                            </Link>
-                        </li>
+                    </li>
+                    <li>
+                        <Link
+                            to="/admin/user"
+                            className="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                        >
+                            User
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            onClick={handleLogout}
+                            to="/login"
+                            className="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-300"
+                        >
+                            Logout
+                        </Link>
                     </li>
                 </ul>
             </div>

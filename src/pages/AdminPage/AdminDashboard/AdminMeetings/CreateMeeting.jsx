@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import formBg4 from '../../../../assets/formBg4.jpg'
-import formBg3 from '../../../../assets/formBg3.jpg'
+
 import formBg5 from '../../../../assets/formBg5.jpg'
 import formbg from '../../../../assets/formbg.jpg'
 

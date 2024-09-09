@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import formbg2 from '../../../../assets/formbg2.jpg';
+
 import form from '../../../../assets/form.png';
 
 import axios from 'axios';
