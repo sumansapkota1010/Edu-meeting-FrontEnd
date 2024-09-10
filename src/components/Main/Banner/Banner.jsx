@@ -9,15 +9,7 @@ const Banner = () => {
 
     return (
         <div
-            className="relative justify-center items-center"
-            style={{
-                backgroundImage: `url(${meetingBg})`,
-                backgroundPosition: 'center center',
-                backgroundAttachment: 'fixed',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                marginTop: window.innerWidth <= 992 ? "60px" : "-135px",
-            }}
+            className="relative justify-center items-center lg:mt-[-200px]"
         >
             <Service />
 

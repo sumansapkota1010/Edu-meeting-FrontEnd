@@ -35,19 +35,19 @@ const MeetingCards = () => {
   }
 
   return (
-    <div className="container leading-10 mt-0 mb-[50px] pb-10 rounded-lg grid grid-cols-1 xl:grid-cols-2 gap-5">
+    <div className="lg:w-2/3 rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
       {meetings.slice(0, 4).map((meeting) => {
         const { month, day } = formatDate(meeting.date);
 
         return (
           <div
             key={meeting._id}
-            className="flex flex-col justify-between  rounded-[20px] overflow-hidden shadow-md"
+            className="rounded-[20px] overflow-hidden shadow-md self-stretch"
           >
-            <div className="relative lg:h-[241px] lg:w-[416px]">
+            <div className="relative">
               <img
                 onClick={() => handleClick(meeting._id)}
-                className="rounded-t-[20px] align-middle m-0 p-0 border-0 outline-0 object-cover h-full w-full"
+                className="object-cover h-full w-full max-h-[350px] lg:max-h-[250px]"
                 src={meeting.meetingImage}
                 alt={meeting.title}
               />
@@ -55,20 +55,18 @@ const MeetingCards = () => {
                 ${meeting.price}
               </span>
             </div>
-            <div className=" lg:h-[196px] lg:w-[416px] flex flex-col bg-white p-[20px] mt-0 m-0 border-0 outline-0 box-border">
+            <div className="flex flex-col bg-white p-5 h-full">
               <div className="flex p-2 ml-1">
-                <h2 className="text-xs uppercase text-[13px] font-semibold text-[#a12c2f] mt-0 mb-0 leading-tight m-0 p-0 border-0 outline-0 box-border">
+                <h2 className="text-xs uppercase text-[13px] font-semibold text-[#a12c2f] mt-0 mb-0 leading-tight m-0 p-0">
                   {month}
-                  <span className="block text-[rgb(31,39,43)] text-[22px] mt-[7px] m-0 p-0 border-0 outline-0 box-border">
+                  <span className="block text-[rgb(31,39,43)] text-[22px] mt-[7px] m-0 p-0">
                     {day}
                   </span>
-
                 </h2>
-                <h2 className="ml-6 mb-8 text-[18px] text-[rgb(31,39,43)] font-semibold  mt-0 leading-tight  p-0 border-0 outline-0 box-border">
+                <h2 className="ml-6 mb-8 text-[18px] text-[rgb(31,39,43)] font-semibold mt-0 leading-tight p-0">
                   {meeting.title}
                 </h2>
               </div>
-
               <p className="ml-[58px] text-[rgb(31,39,43)] text-[14px] mt-[-30px] mb-4 m-0 p-0 border-0 outline-none leading-[25px] box-border">
                 {getFirstLine(meeting.description)}
               </p>
@@ -77,6 +75,7 @@ const MeetingCards = () => {
         );
       })}
     </div>
+
   )
 };
 

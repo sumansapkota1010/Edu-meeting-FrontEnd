@@ -8,7 +8,7 @@ const About = () => {
     };
 
     return (
-        <div className="sm:ml-0 sm: w-full   lg:w-[698] lg:h-[591] bg-white rounded-2xl p-10 ml-11">
+        <div className="w-full bg-white rounded-2xl p-10">
             {aboutData.map((item, index) => (
                 <div
                     key={index}

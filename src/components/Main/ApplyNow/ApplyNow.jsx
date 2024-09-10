@@ -9,8 +9,8 @@ const ApplyNow = () => {
             className="bg-cover bg-center bg-fixed py-36"
             style={{ backgroundImage: `url(${applyNowBg})` }}
         >
-            <div className="container relative">
-                <div className="flex flex-col lg:flex-row">
+            <div className="container">
+                <div className="flex flex-col lg:flex-row gap-8">
                     <div className="w-full lg:w-1/2 flex flex-col justify-center">
                         <div className="mb-8">
                             <div className="bg-white bg-opacity-15 p-10 mb-8">
@@ -45,11 +45,9 @@ const ApplyNow = () => {
                             </div>
                         </div>
                     </div>
-                    {/* About Component */}
-                    <div className="w-full lg:w-1/2 relative lg:absolute lg:top-0 lg:right-0">
-                        <div className="ml-11">
-                            <About />
-                        </div>
+
+                    <div className="w-full lg:w-1/2">
+                        <About />
                     </div>
                 </div>
             </div>
