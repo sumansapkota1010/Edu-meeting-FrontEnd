@@ -56,8 +56,8 @@ const ContactUs = () => {
             style={{ backgroundImage: `url(${contactBg})` }}
         >
             <div className="container mx-auto">
-                <div className="flex flex-wrap gap-6 justify-between">
-                    <div className="w-full">
+                <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch">
+                    <div className="w-full lg:w-2/3">
                         <div className="bg-white rounded-2xl p-10">
                             <form id="contact" onSubmit={handleSubmit}>
                                 <h2 className="uppercase text-gray-800 border-b border-gray-200 mb-10 pb-5 text-lg font-bold">
@@ -105,7 +105,7 @@ const ContactUs = () => {
                                             className="w-full h-10 rounded-2xl bg-gray-100 text-gray-600 text-sm font-medium px-4 py-2 focus:outline-none mb-6"
                                         />
                                     </div>
-                                    <div className="w-full px-2 mb-6 lg:h-[140px] lg:w-[886px]">
+                                    <div className="w-full px-2 mb-6">
                                         <textarea
                                             name="message"
                                             id="message"
@@ -129,8 +129,8 @@ const ContactUs = () => {
                             </form>
                         </div>
                     </div>
-                    <div className="w-full">
-                        <div className="bg-[#A12C2F] p-10 text-white rounded-[20px]">
+                    <div className="w-full lg:w-1/3">
+                        <div className="bg-[#A12C2F] p-10 text-white rounded-[20px] h-full">
                             <ul>
                                 <li className="mb-6 border-b border-opacity-25 pb-6 last:mb-0 last:border-none last:pb-0">
                                     <h6 className="text-sm font-semibold mb-2">Phone Number</h6>
