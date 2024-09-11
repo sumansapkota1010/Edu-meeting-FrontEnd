@@ -20,6 +20,7 @@ const MeetingAllDetails = () => {
     const [singleMeeting, setSingleMeeting] = useState(null);
     const navigate = useNavigate();
 
+
     const fetchMeeting = async () => {
         try {
             const response = await axios.get("http://localhost:5000/api/meetings/");
@@ -37,6 +38,7 @@ const MeetingAllDetails = () => {
     const handleClick = () => {
         navigate('/meetings');
     };
+
 
     if (!singleMeeting) return null;
 
