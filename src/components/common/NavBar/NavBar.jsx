@@ -107,7 +107,7 @@ const NavBar = () => {
                                 <NavigationLink href="/signup">SIGN UP</NavigationLink>
                             </div>
                             :
-                            <NavigationLink onClick={handleLogout}>Logout</NavigationLink>
+                            <NavigationLink onClick={handleLogout}>LOGOUT</NavigationLink>
                     }
                 </div>
 
