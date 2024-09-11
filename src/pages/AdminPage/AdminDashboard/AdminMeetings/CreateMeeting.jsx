@@ -6,6 +6,7 @@ import formbg from '../../../../assets/formbg.jpg'
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CreateMeeting = () => {
     const navigate = useNavigate()
@@ -57,11 +58,28 @@ const CreateMeeting = () => {
             });
 
             console.log('Form data submitted:', response.data);
-            alert('Meeting created successfully');
-            navigate("/admin/meetings/managemeetings")
+            Swal.fire({
+                icon: 'success',
+                title: 'Meeting Created Successfully',
+                text: 'Redirecting to your meetings...',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+            setTimeout(() => {
+                navigate("/admin/meetings/managemeetings")
+            }, 1000);
+
         } catch (error) {
             console.error('Error submitting form data:', error);
-            alert('Failed to create meeting');
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed to create Meeting',
+                text: 'Try Again',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
         }
     };
 
