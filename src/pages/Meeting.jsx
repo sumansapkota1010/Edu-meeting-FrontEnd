@@ -170,7 +170,7 @@ const Meeting = () => {
                                         src={meeting.meetingImage}
                                         alt={meeting.title}
                                     />
-                                    <div className='flex flex-col bg-white  p-4 rounded-br-[20px] rounded-bl-[20px] sm:h-[146px] sm:w-[519px] md:h-[220px] md:w-[300px] md:p-[30px] lg:h-[146px] lg:w-[408px] xl:h-[146px] xl:w-[329px] 2xl:h-[146px] 2xl:w-[385px]   shadow-md'>
+                                    <div className='flex flex-col bg-white  p-4 rounded-br-[20px] rounded-bl-[20px] sm:h-[146px] sm:w-[519px] md:h-[220px] md:w-[300px] md:p-[30px] lg:h-[146px] lg:w-[408px] xl:h-[156px] xl:w-[329px] 2xl:h-[146px] 2xl:w-[385px]   shadow-md'>
                                         <div className='flex items-center'>
                                             <h2 className='uppercase text-sm font-semibold text-red-700 '>
                                                 {month}
@@ -182,7 +182,7 @@ const Meeting = () => {
                                                 {meeting.title}
                                             </h2>
                                         </div>
-                                        <p className='md:ml-[50px] ml-[53px] text-gray-800 text-sm mt-[-10px]  '>
+                                        <p className='md:ml-[50px] ml-[53px] text-gray-800 text-sm mt-[-10px]   '>
                                             {getFirstLine(meeting.description)}
                                         </p>
                                     </div>

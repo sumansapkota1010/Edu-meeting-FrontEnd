@@ -29,11 +29,11 @@ const ProtectedRoute = ({ children }) => {
 
     return isAdmin ? children :
 
-        <html className="flex items-center justify-center h-screen overflow-hidden">
+        <div className="flex items-center justify-center h-screen overflow-hidden">
             <div className="h-full w-full">
                 <img className="h-full w-full object-cover animate-fadeIn" src={accessDeny} alt="Access Deny" />
             </div>
-        </html>
+        </div>
 }
 
 export default ProtectedRoute
