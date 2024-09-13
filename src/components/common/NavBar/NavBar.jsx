@@ -61,7 +61,7 @@ const NavBar = () => {
     };
 
     const handleApplyNowClick = () => {
-        if (location.pathname === '/meetings' || location.pathname === '/meetingAllDetails') {
+        if (location.pathname === '/meetings' || location.pathname === '/meetingAllDetails' || location.pathname === `/meetings/${id}`) {
             navigate('/');
         }
     };
@@ -94,10 +94,10 @@ const NavBar = () => {
                         )}
                     </div>
 
-                    <NavigationLink to="courses" smooth={true} duration={500}>
+                    <NavigationLink to="courses" onClick={handleApplyNowClick} smooth={true} duration={500}>
                         COURSES
                     </NavigationLink>
-                    <NavigationLink to="contactus" smooth={true} duration={500}>
+                    <NavigationLink to="contactus" onClick={handleApplyNowClick} smooth={true} duration={500}>
                         CONTACT US
                     </NavigationLink>
                     {
