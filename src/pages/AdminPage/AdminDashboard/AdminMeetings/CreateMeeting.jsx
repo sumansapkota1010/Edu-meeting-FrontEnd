@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import formbg5 from '../../../../assets/formbg5.jpg'
 import formbg from '../../../../assets/formbg.jpg'
+import bg3 from '../../../../assets/bg3.jpg'
 
 
 import axios from 'axios';
@@ -85,11 +86,11 @@ const CreateMeeting = () => {
 
     return (
         <div
-            style={{ backgroundImage: `url(${formbg})` }}
+            style={{ backgroundImage: `url(${bg3})` }}
             className="flex items-center justify-center w-full min-h-screen px-4 bg-cover bg-no-repeat"
         >
             <div
-                style={{ backgroundImage: `url(${formbg5})` }}
+
                 className="bg-content p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto mt-8 lg:mt-12"
             >
                 <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Create Meeting</h2>
