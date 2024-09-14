@@ -80,8 +80,9 @@ const Courses = () => {
                                     {[0, 1, 2, 3, 4].map(index => (
                                         <FaStar
                                             key={index}
+
                                             color={index < course.rating ? "#f5a425" : "#e4e5e9"}
-                                            className="text-[16px] leading-[14px]"
+                                            className="text-[16px] leading-[14px] "
                                         />
                                     ))}
                                 </div>

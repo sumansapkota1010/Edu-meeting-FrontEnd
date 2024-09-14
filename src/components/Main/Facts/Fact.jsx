@@ -64,7 +64,7 @@ const Fact = () => {
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2 flex items-center">
-                        <div className="text-center h-[396px] w-[566px] ml-[70px] bg-cover bg-center bg-no-repeat rounded-[20px]"
+                        <div className="text-center h-[396px] w-[566px] sm:ml-[10px] sm:w-full lg:ml-[70px] bg-cover bg-center bg-no-repeat rounded-[20px]"
                             style={{ backgroundImage: `url(${videoBg})` }}
                         >
 

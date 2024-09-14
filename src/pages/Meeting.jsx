@@ -47,6 +47,7 @@ const Meeting = () => {
                     limit,
                 },
             });
+            console.log(response.data)
 
             if (response.data.success) {
                 setMeetings(response.data.meetings);
