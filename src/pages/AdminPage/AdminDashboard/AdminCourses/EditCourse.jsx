@@ -5,6 +5,7 @@ import formbg from '../../../../assets/formbg.jpg';
 
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Editcourse = () => {
     const navigate = useNavigate();
@@ -44,10 +45,27 @@ const Editcourse = () => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            alert('course updated successfully');
-            navigate("/admin/courses/managecourses");
+            Swal.fire({
+                icon: 'success',
+                title: 'Course Updated Successfully',
+                text: 'Redirecting to your courses...',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+            setTimeout(() => {
+                navigate("/admin/courses/managecourses");
+            }, 1000);
+
         } catch (error) {
-            alert('Failed to update course');
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed to update Courses',
+                text: 'Try Again',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
         }
     };
 

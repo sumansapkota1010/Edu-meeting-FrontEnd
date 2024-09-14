@@ -5,6 +5,7 @@ import bg3 from '../../../../assets/bg3.jpg';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CreateCourse = () => {
     const navigate = useNavigate()
@@ -51,12 +52,31 @@ const CreateCourse = () => {
                 },
             });
 
+
             console.log('Form data submitted:', response.data);
-            alert('Course created successfully');
-            navigate("/admin/courses/managecourses")
+            Swal.fire({
+                icon: 'success',
+                title: 'Course Created Successfully',
+                text: 'Redirecting to your courses...',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+            setTimeout(() => {
+                navigate("/admin/courses/managecourses")
+            }, 1000);
+
         } catch (error) {
             console.error('Error submitting form data:', error);
-            alert('Failed to create course');
+            Swal.fire({
+                icon: "error",
+                title: 'Failed to create Course',
+                text: 'Try Again',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+
+            })
         }
     };
 
