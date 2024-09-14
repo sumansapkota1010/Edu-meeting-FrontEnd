@@ -4,6 +4,7 @@ import form from '../../../../assets/form.png';
 
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const EditMeeting = () => {
     const navigate = useNavigate();
@@ -43,10 +44,26 @@ const EditMeeting = () => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            alert('Meeting updated successfully');
-            navigate("/admin/meetings/managemeetings");
+            Swal.fire({
+                icon: 'success',
+                title: 'Meeting Updatad Successfully',
+                text: 'Redirecting to your meetings...',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
+            setTimeout(() => {
+                navigate("/admin/meetings/managemeetings")
+            }, 1000);
         } catch (error) {
-            alert('Failed to update meeting');
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed to update Meeting',
+                text: 'Try Again',
+                timer: 1000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            });
         }
     };
 
