@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const APIAuthenticated = (token) => {
   return axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "https://edu-meeting-backend.vercel.app/api",
     headers: {
       Authorization: `Bearer ${token}`,
     },

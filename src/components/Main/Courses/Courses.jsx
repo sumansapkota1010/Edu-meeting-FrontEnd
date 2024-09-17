@@ -14,7 +14,7 @@ const Courses = () => {
 
     const fetchCourse = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/courses");
+            const response = await axios.get("https://edu-meeting-backend.vercel.app/api/courses");
             setCourses(response.data.courses);
         } catch (error) {
             console.error("Error fetching courses:", error);

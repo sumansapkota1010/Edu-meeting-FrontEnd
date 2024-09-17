@@ -26,7 +26,7 @@ const ContactUs = () => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post("http://localhost:5000/api/contact", formData, {
+            const response = await axios.post("https://edu-meeting-backend.vercel.app/api/contact", formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

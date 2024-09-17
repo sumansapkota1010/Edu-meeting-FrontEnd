@@ -25,13 +25,13 @@ const LoginPage = () => {
         setIsLoggingIn(true);
 
         try {
-            const loginResponse = await axios.post('http://localhost:5000/api/login', userData);
+            const loginResponse = await axios.post('https://edu-meeting-backend.vercel.app/api/login', userData);
             if (loginResponse.status === 200) {
                 const { data: { data: token } } = loginResponse;
 
                 localStorage.setItem('token', token);
 
-                const profileResponse = await axios.get('http://localhost:5000/api/profile', {
+                const profileResponse = await axios.get('https://edu-meeting-backend.vercel.app/api/profile', {
                     headers: { Authorization: `Bearer ${token}` }
 
                 });

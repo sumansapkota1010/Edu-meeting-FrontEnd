@@ -10,7 +10,7 @@ const AdminCourses = () => {
 
     const fetchCourses = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/courses/');
+            const response = await axios.get('https://edu-meeting-backend.vercel.app/api/courses/');
             setCourses(response.data.courses);
         } catch (error) {
             console.error('Error fetching courses:', error);
@@ -25,7 +25,7 @@ const AdminCourses = () => {
         if (!courseId) return;
 
         try {
-            await axios.delete(`http://localhost:5000/api/courses/${courseId}`, {
+            await axios.delete(`https://edu-meeting-backend.vercel.app/api/courses/${courseId}`, {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
             setCourses(courses.filter(course => course._id !== courseId));

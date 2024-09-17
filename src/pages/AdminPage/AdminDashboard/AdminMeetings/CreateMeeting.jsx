@@ -51,7 +51,7 @@ const CreateMeeting = () => {
         });
 
         try {
-            const response = await axios.post('http://localhost:5000/api/meetings', form, {
+            const response = await axios.post('https://edu-meeting-backend.vercel.app/api/meetings', form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,

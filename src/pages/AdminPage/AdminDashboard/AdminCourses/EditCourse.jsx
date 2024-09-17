@@ -39,7 +39,7 @@ const Editcourse = () => {
         });
 
         try {
-            await axios.patch(`http://localhost:5000/api/courses/${id}`, form, {
+            await axios.patch(`https://edu-meeting-backend.vercel.app/api/courses/${id}`, form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,
@@ -71,7 +71,7 @@ const Editcourse = () => {
 
     const fetchSingleData = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/courses/${id}`);
+            const response = await axios.get(`https://edu-meeting-backend.vercel.app/api/courses/${id}`);
             console.log(response.data.course)
             if (response.data.course.length > 0) {
                 setFormData(response.data.course[0]);

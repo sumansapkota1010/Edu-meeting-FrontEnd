@@ -10,7 +10,7 @@ const AdminUser = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/admin/user', {
+                const response = await axios.get('https://edu-meeting-backend.vercel.app/api/admin/user', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUsers(response.data.data);
@@ -29,7 +29,7 @@ const AdminUser = () => {
             return
         }
         try {
-            await axios.delete(`http://localhost:5000/api/admin/user/${userId}`,
+            await axios.delete(`https://edu-meeting-backend.vercel.app/api/admin/user/${userId}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`

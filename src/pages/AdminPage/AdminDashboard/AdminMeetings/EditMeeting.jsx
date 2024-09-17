@@ -38,7 +38,7 @@ const EditMeeting = () => {
         });
 
         try {
-            await axios.patch(`http://localhost:5000/api/meetings/${id}`, form, {
+            await axios.patch(`https://edu-meeting-backend.vercel.app/api/meetings/${id}`, form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,
@@ -69,7 +69,7 @@ const EditMeeting = () => {
 
     const fetchSingleData = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/meetings/${id}`);
+            const response = await axios.get(`https://edu-meeting-backend.vercel.app/api/meetings/${id}`);
             if (response.data.meetings.length > 0) {
                 setFormData(response.data.meetings[0]);
             } else {
