@@ -23,7 +23,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://edu-meeting-backend.vercel.app/api/profile/api/register', userData);
+            const response = await axios.post('https://edu-meeting-backend.vercel.app/api/register', userData);
             if (response.status === 201) {
                 Swal.fire({
                     icon: 'success',
