@@ -45,7 +45,7 @@ const CreateCourse = () => {
         });
 
         try {
-            const response = await axios.post('https://edu-meeting-backend.vercel.app/api/courses', form, {
+            const response = await axios.post('http://localhost:5000/api/courses', form, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,

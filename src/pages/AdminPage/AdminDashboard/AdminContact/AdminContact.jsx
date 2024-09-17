@@ -8,7 +8,7 @@ const AdminContact = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await axios.get('https://edu-meeting-backend.vercel.app/api/admin/contact', {
+                const response = await axios.get('http://localhost:5000/api/admin/contact', {
                     headers: { 'Authorization': `Bearer ${token}` },
                 });
                 setContacts(response.data.data);

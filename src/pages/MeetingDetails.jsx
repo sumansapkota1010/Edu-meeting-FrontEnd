@@ -23,7 +23,7 @@ const MeetingDetails = () => {
     const navigate = useNavigate()
 
     const fetchDetails = async () => {
-        const response = await axios.get(`https://edu-meeting-backend.vercel.app/api/meetings/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/meetings/${id}`);
         setMeetingDetails(response.data.meetings);
         console.log(response.data.meetings)
     };

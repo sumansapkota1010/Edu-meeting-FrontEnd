@@ -38,7 +38,7 @@ const Meeting = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`https://edu-meeting-backend.vercel.app/api/profile/api/meetings/category/${category}`, {
+            const response = await axios.get(`http://localhost:5000/api/meetings/category/${category}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
