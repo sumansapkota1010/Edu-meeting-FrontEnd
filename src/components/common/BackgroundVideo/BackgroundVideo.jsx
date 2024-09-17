@@ -8,7 +8,7 @@ const BackgroundVideo = () => {
         <div className="relative z-10 overflow-hidden w-full h-screen">
             <video
                 className="absolute top-0 left-0 w-full h-full object-cover"
-                src="/src/assets/course-video.mp4"
+                src="../../../../public/assets/course-video.mp4"
                 autoPlay
                 muted
                 loop
