@@ -29,7 +29,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "https://edu-meeting-front-end.vercel.app/",
+      path: "/",
       element: <Layout />,
       children: [{ path: "", element: <Home /> }],
     },
