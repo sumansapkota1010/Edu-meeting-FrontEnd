@@ -10,7 +10,7 @@ const AdminMeetings = () => {
 
     const fetchMeetings = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/meetings/');
+            const response = await axios.get('https://edu-meeting-backend.onrender.com/api/meetings/');
             setMeetings(response.data.meetings);
             console.log(response.data.meetings)
         } catch (error) {
@@ -29,7 +29,7 @@ const AdminMeetings = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:5000/api/meetings/${meetingId}`, {
+            await axios.delete(`https://edu-meeting-backend.onrender.com/api/meetings/${meetingId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
