@@ -78,18 +78,28 @@ export function fetchProfile() {
 
     try {
       const token = localStorage.getItem("token");
+
       if (!token) {
-        throw new Error("No authentication token found");
+        console.error("No authentication token found");
+        dispatch(setStatus(STATUSES.ERROR));
+        return;
       }
 
-      const response = await APIAuthenticated(token).get("/profile");
+      console.log("Fetching profile with token:", token);
 
+      const response = await APIAuthenticated(token).get("/api/profile");
+
+      console.log("Profile response data:", response.data);
       dispatch(setUser(response.data.data));
-      console.log(response.data);
       dispatch(setStatus(STATUSES.SUCCESS));
     } catch (error) {
+      console.error("Error fetching profile:", error);
+
+      if (error.response) {
+        console.error("Response error data:", error.response.data);
+      }
+
       dispatch(setStatus(STATUSES.ERROR));
-      console.error(error);
     }
   };
 }
