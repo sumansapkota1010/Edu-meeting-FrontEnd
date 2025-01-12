@@ -29,7 +29,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "https://edu-meeting-front-end.vercel.app/",
       element: <Layout />,
       children: [{ path: "", element: <Home /> }],
     },
@@ -47,7 +47,7 @@ function App() {
       ),
     },
     {
-      path: "admin/meetings",
+      path: "https://edu-meeting-front-end.vercel.app/admin/meetings",
       element: (
         <ProtectedRoute>
           <MeetingsController />
@@ -57,7 +57,7 @@ function App() {
     },
 
     {
-      path: "admin/meetings/create",
+      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/create",
       element: (
         <ProtectedRoute>
           <CreateMeeting />
@@ -66,7 +66,7 @@ function App() {
 
     },
     {
-      path: "admin/meetings/edit/:id",
+      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/edit/:id",
       element: (
         <ProtectedRoute>
           <EditMeeting />
@@ -75,7 +75,7 @@ function App() {
 
     },
     {
-      path: "admin/meetings/managemeetings",
+      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/managemeetings",
       element: (
         <ProtectedRoute>
           <AdminMeetings />
@@ -84,7 +84,7 @@ function App() {
 
     },
     {
-      path: "admin/courses",
+      path: "https://edu-meeting-front-end.vercel.app/admin/courses",
       element: (
         <ProtectedRoute>
           <CourseController />
@@ -95,7 +95,7 @@ function App() {
 
 
     {
-      path: "admin/courses/create",
+      path: "https://edu-meeting-front-end.vercel.app/admin/courses/create",
       element: (
         <ProtectedRoute>
           <CreateCourse />
@@ -104,7 +104,7 @@ function App() {
 
     },
     {
-      path: "admin/courses/edit/:id",
+      path: "https://edu-meeting-front-end.vercel.app/admin/courses/edit/:id",
       element: (
         <ProtectedRoute>
           <EditCourse />
@@ -114,7 +114,7 @@ function App() {
     },
 
     {
-      path: "admin/courses/managecourses",
+      path: "https://edu-meeting-front-end.vercel.app/admin/courses/managecourses",
       element: (
         <ProtectedRoute>
           <AdminCourses />
@@ -146,7 +146,7 @@ function App() {
 
 
 
-    { path: "/meetingAllDetails", element: <MeetingAllDetails /> },
+    { path: "https://edu-meeting-front-end.vercel.app/meetingAllDetails", element: <MeetingAllDetails /> },
   ]);
 
   return (
