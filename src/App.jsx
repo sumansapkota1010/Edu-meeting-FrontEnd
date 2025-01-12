@@ -47,7 +47,7 @@ function App() {
       ),
     },
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/meetings",
+      path: "admin/meetings",
       element: (
         <ProtectedRoute>
           <MeetingsController />
@@ -57,7 +57,7 @@ function App() {
     },
 
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/create",
+      path: "admin/meetings/create",
       element: (
         <ProtectedRoute>
           <CreateMeeting />
@@ -66,7 +66,7 @@ function App() {
 
     },
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/edit/:id",
+      path: "admin/meetings/edit/:id",
       element: (
         <ProtectedRoute>
           <EditMeeting />
@@ -75,7 +75,7 @@ function App() {
 
     },
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/meetings/managemeetings",
+      path: "admin/meetings/managemeetings",
       element: (
         <ProtectedRoute>
           <AdminMeetings />
@@ -84,7 +84,7 @@ function App() {
 
     },
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/courses",
+      path: "admin/courses",
       element: (
         <ProtectedRoute>
           <CourseController />
@@ -95,7 +95,7 @@ function App() {
 
 
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/courses/create",
+      path: "admin/courses/create",
       element: (
         <ProtectedRoute>
           <CreateCourse />
@@ -104,7 +104,7 @@ function App() {
 
     },
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/courses/edit/:id",
+      path: "admin/courses/edit/:id",
       element: (
         <ProtectedRoute>
           <EditCourse />
@@ -114,7 +114,7 @@ function App() {
     },
 
     {
-      path: "https://edu-meeting-front-end.vercel.app/admin/courses/managecourses",
+      path: "admin/courses/managecourses",
       element: (
         <ProtectedRoute>
           <AdminCourses />
@@ -146,7 +146,7 @@ function App() {
 
 
 
-    { path: "https://edu-meeting-front-end.vercel.app/meetingAllDetails", element: <MeetingAllDetails /> },
+    { path: "/meetingAllDetails", element: <MeetingAllDetails /> },
   ]);
 
   return (
